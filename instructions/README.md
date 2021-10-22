@@ -10,10 +10,11 @@ Things you will need to use robo-knobs:
 
 ## Servos
 
+Servos are small motors, widely used in hobbyist robotics and RC cars.  They vary in terms of their operable range of rotation (notable examples are 180/270/360).  In robo-knob, the servos act as the method of physical motion driving control of the knobs.
 
 ### 180 Degree Servos
 
-180 degrees  3 to 8 on a Fender-style 1-10 knob.These are some of the most readily available and cheapest options out there, including models like [Tower Pro MG90S](https://www.amazon.com/Maxmoral-Upgraded-Digital-Vehicle-Helicopter/dp/B07NV476P7).  These have a 5mm shaft, require a 5-6mm couple for most pots.  
+180 degrees servos can automate knob changes between values of approximately 3 to 8 on a Fender-style 1-10 knob, and therefore cover a lot of the usable range of the tone controls on many devices.  These servos are also some of the most readily available and cheapest options.  A standard recommendation is the [Tower Pro MG90S](https://www.amazon.com/Maxmoral-Upgraded-Digital-Vehicle-Helicopter/dp/B07NV476P7).     Most have a 5mm shaft, require a 5-6mm couple for most pots.  
 
 ### 270 Degree Servos
 
