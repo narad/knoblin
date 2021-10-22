@@ -1,12 +1,12 @@
 # Instructions
 
 Things you will need to use robo-knobs:
-- [Servos](https://github.com/narad/robo-knob/main/instructions/README.md#Servos)
-- [Arduino](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Arduino)
-- [Servo Controller](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servo-Controller)
-- [External Power Supply](https://github.com/narad/robo-knob/edit/main/instructions/README.md#external-power-supply)
-- [Servos](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servos)
-- [USB MIDI Interface](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servos)
+- [Servos](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servos)
+- [Arduino](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Arduino)
+- [Servo Controller](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servo-Controller)
+- [External Power Supply](https://github.com/narad/robo-knob/blob/main/instructions/README.md#external-power-supply)
+- [Servos](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servos)
+- [USB MIDI Interface](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servos)
 
 
 ## Servos
@@ -26,3 +26,12 @@ Most of the 3D print parts and instructions will assume the use of these heavier
 ### 360 Degree Servos / Stepper Motors
 
 I have experimented with 360 degree servos, but control of 360 servos operates in an entirely different way (from an Arduino p
+
+
+## Arduino
+
+## Servo Controller
+
+## External Power Supply
+
+## USB MIDI Interface
