@@ -5,8 +5,7 @@ Things you will need to use robo-knobs:
 - [Arduino](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Arduino)
 - [Servo Controller](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servo-Controller)
 - [External Power Supply](https://github.com/narad/robo-knob/blob/main/instructions/README.md#external-power-supply)
-- [Servos](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servos)
-- [USB MIDI Interface](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servos)
+- [USB MIDI Interface](https://github.com/narad/robo-knob/blob/main/instructions/README.md#usb-midi-interface)
 
 
 ## Servos
