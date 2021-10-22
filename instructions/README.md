@@ -44,6 +44,8 @@ An Arduino unit is required for establishing the link between a computer and the
 In order to drive a large number of servos simultaneously, I recommend the use of a servo controller:
 
 - [PCA9685 16 CH 12Bit PWM Servo Motor Driver Board Controller IIC Interface](https://www.amazon.com/PCA9685-Controller-Interface-Arduino-Raspberry/dp/B07WS5XY63/ref=sr_1_1?crid=IHNIMCMXC84U&dchild=1&keywords=Arduino%2BServo%2Bcontroller&qid=1634945202&qsid=136-7028351-8090601&sprefix=arduino%2Bservo%2Bcontroller%2Caps%2C154&sr=8-1&sres=B07WS5XY63%2CB07RMTN4NZ%2CB0797JK4RW%2CB014KTSMLA%2CB07BRS249H%2CB07VMDFTVR%2CB071WVJCSM%2CB01D1D0CX2%2CB01N91K6US%2CB07BGVVJJN%2CB0793PFGCY%2CB07B7JJQMF%2CB08Q3K92ZY%2CB07235MBM6%2CB00UET6VJ6%2CB01EWNUUUA%2CB00I4WMOGE%2CB011NJA38A%2CB073XY5NT1%2CB01D8KOZF4&th=1)
+  
+  <img src="https://m.media-amazon.com/images/I/61P3Fe0N5kL._AC_SL1001_.jpg" width="300">
 
 This provides a way of routing external power to the servos (the draw from more than a couple of servos directly on the Arduino board will cause irregular behavior) and more PWM jacks than a typical Arduino board to support many servos.
 
