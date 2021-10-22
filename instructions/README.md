@@ -10,9 +10,10 @@ Things you will need to use robo-knobs:
 
 ## Servos
 
+
 ### 180 Degree Servos
 
-180 degrees  3 to 8 on a Fender-style 1-10 knob.These are some of the most readily available and cheapest options out there, including models like Tower Pro MG90S.  These have a 5mm shaft.  The disadvantages here is that I have found the gears to slip a bit, which over the course of hundreds of changes can create slightly unreliable readings.
+180 degrees  3 to 8 on a Fender-style 1-10 knob.These are some of the most readily available and cheapest options out there, including models like [Tower Pro MG90S](https://www.amazon.com/Maxmoral-Upgraded-Digital-Vehicle-Helicopter/dp/B07NV476P7).  These have a 5mm shaft, require a 5-6mm couple for most pots.  
 
 ### 270 Degree Servos
 
@@ -25,9 +26,11 @@ Most of the 3D print parts and instructions will assume the use of these heavier
 ### 360 Degree Servos / Stepper Motors
 
 I have experimented with 360 degree servos, but control of 360 servos operates in an entirely different way (from an Arduino p
-
+The disadvantages here is that I have found the gears to slip a bit, which over the course of hundreds of changes can create slightly unreliable readings.
 
 ## Arduino
+
+An Arduino unit is required for establishing the link between a computer and the servos (or the servo controller in this case) by hosting and executing simple command programs.  I recommend using a servo controller which will take the headache out of controlling > 2 servos simultaneously, and in this case, almost any Arduino unit is probably suitable.  Generally I recommend the [Uno releases](https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6), or the [Elegoo Arduino starter kit](https://www.amazon.com/ELEGOO-Project-Tutorial-Controller-Projects/dp/B01D8KOZF4) which has lots of useful components and some other fun projects.
 
 ## Servo Controller
 
