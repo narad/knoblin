@@ -1,23 +1,23 @@
 # Instructions
 
 Things you will need to use robo-knobs:
-- Servos
-
-  here are some useful servos
-  
-- Arduino
-- Servo Controller
-- External Power Supply
-- USB MIDI Interface
+- [Servos](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servos)
+- [Arduino](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Arduino)
+- [Servo Controller](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servo-Controller)
+- [External Power Supply](https://github.com/narad/robo-knob/edit/main/instructions/README.md#external-power-supply)
+- [Servos](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servos)
+- [USB MIDI Interface](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servos)
 
 
 ## Servos
 
 ### 180 Degree Servos
 
-These are some of the most readily available and cheapest options out there, including models like Tower Pro MG90S.  These have a 5mm shaft.  The disadvantages here is that I have found the gears to slip a bit, which over the course of hundreds of changes can create slightly unreliable readings.
+180 degrees  3 to 8 on a Fender-style 1-10 knob.These are some of the most readily available and cheapest options out there, including models like Tower Pro MG90S.  These have a 5mm shaft.  The disadvantages here is that I have found the gears to slip a bit, which over the course of hundreds of changes can create slightly unreliable readings.
 
 ### 270 Degree Servos
+
+270 degrees covers the range of 
 
 - [Smraza Servo Motor Digital 20kg](https://www.amazon.co.jp/gp/product/B087D1LWB3/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1)
 
