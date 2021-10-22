@@ -1,23 +1,7 @@
-# robo-knob
+# 3D models
 
-Robo-knob is a library of code, instructions, and model specifications for automated control of the knobs on musical devices, especially those found on guitar amplifiers and effects pedals.  
+The main considerations to these parts is that they would be:
+- easily printable even with budget printetrs
+- flexible enough to be used on a variety of gear, including both pedals (vertical knob orientation) and amps (often horizontal knob orientation).
 
-While originally developed as a way of performing large-scale data gathering from musical devices, there are probably lots of other fun uses for it!  Some ideas that spring to mind are preset changes on analog equipment, changing device settings based on what is being played, changing timbre over the envelope of the notes being played, etc.)
-
-Robo-knob is roughly partitioned into three sections:
-- Material requirements, the basic components you'll need to buy to setup the interface
-- 3D models, the adapters and mounts for connecting the controls to the music devices
-- Code, for issuing the control commands to the device (a mix of Python and C++/Arduino)
-
-### Reference
-
-If using robo-knob code in academic work, please cite the [paper](https://www.dafx.de/paper-archive/details.php?id=G8gchE7K8Itm8VPTGRtYyA) it was developed for:
-
-```
-@article{narad2021ampspace,
-  title = {Amp-Space: A Large-scale Dataset for Fine-grained Timbre Transformation},
-  author = {Naradowsky, Jason},
-  journal = {Proceedings of the 24th International Conference on Digital Audio Effects (DAFx-21), Vienna, Austria},
-  year = {2021}
-}
-```
+One option is to simply use rigid couplers like these.  What's wrong with this approach?  Nothing, if nothing goes wrong.  Otherwise, it's good to have a point of failure that's not on the servo (sithe metal-geared servos I recommend using are not likely to be the weakest link in the chain) and not on your possibly expensive and difficult to repair gear!  To solve this problem (and a few others) I've designed a simple shaft with beveled caps which can attach to the recommended servos shafts and typical CTS-style pots.
