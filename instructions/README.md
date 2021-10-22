@@ -14,7 +14,13 @@ Servos are small motors, widely used in hobbyist robotics and RC cars.  They var
 
 ### 180 Degree Servos
 
-180 degrees servos can automate knob changes between values of approximately 3 to 8 on a Fender-style 1-10 knob, and therefore cover a lot of the usable range of the tone controls on many devices.  These servos are also some of the most readily available and cheapest options.  A standard recommendation is the [Tower Pro MG90S](https://www.amazon.com/Maxmoral-Upgraded-Digital-Vehicle-Helicopter/dp/B07NV476P7).     Most have a 5mm shaft, require a 5-6mm couple for most pots.  
+180 degrees servos can automate knob changes between values of approximately 3 to 8 on a Fender-style 1-10 knob, and therefore cover a lot of the usable range of the tone controls on many devices.  These servos are also some of the most readily available and cheapest options.  My recommendation in this category is:
+
+- [Tower Pro MG90S](https://www.amazon.com/Maxmoral-Upgraded-Digital-Vehicle-Helicopter/dp/B07NV476P7)
+
+  5mm shaft
+
+Most have a 5mm shaft, require a 5-6mm couple for most pots.  
 
 ### 270 Degree Servos
 
@@ -35,6 +41,17 @@ An Arduino unit is required for establishing the link between a computer and the
 
 ## Servo Controller
 
+In order to drive a large number of servos simultaneously, I recommend the use of a servo controller:
+
+- [PCA9685 16 CH 12Bit PWM Servo Motor Driver Board Controller IIC Interface](https://www.amazon.com/PCA9685-Controller-Interface-Arduino-Raspberry/dp/B07WS5XY63/ref=sr_1_1?crid=IHNIMCMXC84U&dchild=1&keywords=Arduino%2BServo%2Bcontroller&qid=1634945202&qsid=136-7028351-8090601&sprefix=arduino%2Bservo%2Bcontroller%2Caps%2C154&sr=8-1&sres=B07WS5XY63%2CB07RMTN4NZ%2CB0797JK4RW%2CB014KTSMLA%2CB07BRS249H%2CB07VMDFTVR%2CB071WVJCSM%2CB01D1D0CX2%2CB01N91K6US%2CB07BGVVJJN%2CB0793PFGCY%2CB07B7JJQMF%2CB08Q3K92ZY%2CB07235MBM6%2CB00UET6VJ6%2CB01EWNUUUA%2CB00I4WMOGE%2CB011NJA38A%2CB073XY5NT1%2CB01D8KOZF4&th=1)
+
+This provides a way of routing external power to the servos (the draw from more than a couple of servos directly on the Arduino board will cause irregular behavior) and more PWM jacks than a typical Arduino board to support many servos.
+
 ## External Power Supply
+
+A convenient way of accomplishing this is with a standard 12V power supply with a barrel connector, and a female barrel connector with terminal ends:
+
+[Barrel Adapter](https://www.amazon.com/43x2pcs-Connectors-Security-Lighting-MILAPEAK/dp/B072BXB2Y8/ref=sr_1_19?crid=37V7P6BP98PKD&dchild=1&keywords=barrel+jack+to+terminal&qid=1634945471&qsid=136-7028351-8090601&sprefix=barrel+jack+to+terminal%2Caps%2C111&sr=8-19&sres=B076SXZK7M%2CB07LFRDSB7%2CB07JMY5XXT%2CB07C61434H%2CB015OCV5Y8%2CB07CWQPPTW%2CB01ER6QWAY%2CB01GPL8MVG%2CB019CXCHNS%2CB01J1WZENK%2CB01CJE0ZLI%2CB081WSVNFZ%2CB07XZ7Q2N7%2CB08PYWN3T7%2CB072BXB2Y8%2CB01MZ0FWSK)
+
 
 ## USB MIDI Interface
