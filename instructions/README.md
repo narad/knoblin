@@ -1,7 +1,7 @@
 # Instructions
 
 Things you will need to use robo-knobs:
-- [Servos](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servos)
+- [Servos](https://github.com/narad/robo-knob/main/instructions/README.md#Servos)
 - [Arduino](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Arduino)
 - [Servo Controller](https://github.com/narad/robo-knob/edit/main/instructions/README.md#Servo-Controller)
 - [External Power Supply](https://github.com/narad/robo-knob/edit/main/instructions/README.md#external-power-supply)
