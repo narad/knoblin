@@ -6,6 +6,7 @@ Things you will need to use robo-knobs:
 - [Servo Controller](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servo-Controller)
 - [External Power Supply](https://github.com/narad/robo-knob/blob/main/instructions/README.md#external-power-supply)
 - [USB MIDI Interface](https://github.com/narad/robo-knob/blob/main/instructions/README.md#usb-midi-interface)
+- [LEGO](https://github.com/narad/robo-knob/blob/main/instructions/README.md#LEGO)
 
 
 ## Servos
@@ -57,3 +58,7 @@ A convenient way of accomplishing this is with a standard 12V power supply with 
 
 
 ## USB MIDI Interface
+
+## LEGO
+
+The parts listed above can be used together with the robo-knob code as is to control knobs, but if using the included 3D rail model for supporting the servos, some LEGO is also required to build a platform for positioning and holding the servos in the correct positions.  There's no correct or intended way to use LEGO and no particular set I would prefer over another.  The only real requirement pertains to the situation when using two or more rails to create multiple "floors" of servos, which is necessary when knobs are packed more closely together than the servo bodies can accomodate.  In this case you need enough big blocks to build a support for a secondary tower about 62.5mm higher than the first, and so on (though I've yet to work with a pedal that required more than 2 levels).
