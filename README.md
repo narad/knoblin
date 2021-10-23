@@ -5,9 +5,9 @@ Robo-knob is a library of code, instructions, and model specifications for autom
 While originally developed as a way of performing large-scale data gathering from musical devices, there are probably lots of other fun uses for it!  Some ideas that spring to mind are preset changes on analog equipment, changing device settings based on what is being played, changing timbre over the envelope of the notes being played, etc.)
 
 Robo-knob is roughly partitioned into three sections:
-- Material requirements, the basic components you'll need to buy to setup the interface
-- 3D models, the adapters and mounts for connecting the controls to the music devices
-- Code, for issuing the control commands to the device (a mix of Python and C++/Arduino)
+- [Material requirements and instructions](https://github.com/narad/robo-knob/tree/main/instructions#readme), the basic components you'll need to buy to setup the interface
+- [3D models](https://github.com/narad/robo-knob/tree/main/modelss#readme), the adapters and mounts for connecting the controls to the music devices
+- [Code](https://github.com/narad/robo-knob/tree/main/knobs#readme), for issuing the control commands to the device (a mix of Python and C++/Arduino)
 
 ### Reference
 
