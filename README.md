@@ -6,7 +6,7 @@ While originally developed as a way of performing large-scale data gathering fro
 
 Robo-knob is roughly partitioned into three sections:
 - [Material requirements and instructions](https://github.com/narad/robo-knob/tree/main/instructions#readme), the basic components you'll need to buy to setup the interface
-- [3D models](https://github.com/narad/robo-knob/tree/main/modelss#readme), the adapters and mounts for connecting the controls to the music devices
+- [3D models](https://github.com/narad/robo-knob/tree/main/models#readme), the adapters and mounts for connecting the controls to the music devices
 - [Code](https://github.com/narad/robo-knob/tree/main/knobs#readme), for issuing the control commands to the device (a mix of Python and C++/Arduino)
 
 ### Reference
