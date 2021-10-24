@@ -2,12 +2,24 @@
 
 Things you will need to use robo-knobs:
 - [Servos](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servos)
+  
+  Servos are small motors which provide the force to turn knobs. 
+  
 - [Arduino](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Arduino)
+
+  Arduino boards are cheap and open-source platform which can be used for programmatic control of electronics. 
+  
 - [Servo Controller](https://github.com/narad/robo-knob/blob/main/instructions/README.md#Servo-Controller)
+
+  A servo controller provides a simple interface for the control and power of many servos.
+  
 - [External Power Supply](https://github.com/narad/robo-knob/blob/main/instructions/README.md#external-power-supply)
-- [USB MIDI Interface](https://github.com/narad/robo-knob/blob/main/instructions/README.md#usb-midi-interface)
+
+  An external 12V PSU for powering servos.
+
 - [LEGO](https://github.com/narad/robo-knob/blob/main/instructions/README.md#LEGO)
 
+  The platforms for positioning servos are built LEGO and 3D printed models.
 
 ## Servos
 
@@ -55,9 +67,6 @@ This provides a way of routing external power to the servos (the draw from more 
 A convenient way of accomplishing this is with a standard 12V power supply with a barrel connector, and a female barrel connector with terminal ends:
 
 [Barrel Adapter](https://www.amazon.com/43x2pcs-Connectors-Security-Lighting-MILAPEAK/dp/B072BXB2Y8/ref=sr_1_19?crid=37V7P6BP98PKD&dchild=1&keywords=barrel+jack+to+terminal&qid=1634945471&qsid=136-7028351-8090601&sprefix=barrel+jack+to+terminal%2Caps%2C111&sr=8-19&sres=B076SXZK7M%2CB07LFRDSB7%2CB07JMY5XXT%2CB07C61434H%2CB015OCV5Y8%2CB07CWQPPTW%2CB01ER6QWAY%2CB01GPL8MVG%2CB019CXCHNS%2CB01J1WZENK%2CB01CJE0ZLI%2CB081WSVNFZ%2CB07XZ7Q2N7%2CB08PYWN3T7%2CB072BXB2Y8%2CB01MZ0FWSK)
-
-
-## USB MIDI Interface
 
 ## LEGO
 
