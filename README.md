@@ -24,7 +24,7 @@ If using robo-knob code in academic work, please cite the [paper](https://www.da
 
 ### Acknowledgements
 
-Michael Karsay's [Terrorbot](http://trigonometrie.bplaced.net/blog/terrorbot/) project was a great inspiration and proof-of-concept that led me down the Arduino path, as was Thomas Töngi's [geckotool](https://geckotool.com/) project.  I learned a lot in a little time thanks to help from the 3D printing community.  Many thanks to Josef Prusa and [The 3D Printing Professor](https://www.youtube.com/channel/UCJk5KVaJVBEEl_jP5gKjoDw) -- who knew printing effective and accurate LEGO-style blocks was a complicated topic!
+Michael Karsay's [Terrorbot](http://trigonometrie.bplaced.net/blog/terrorbot/) project was a great inspiration and proof-of-concept that led me down the Arduino path, as was Thomas Töngi's [geckotool](https://geckotool.com/) project.  I learned a lot in a little time thanks to help from the 3D printing community.  Many thanks to Josef Prusa and [The 3D Printing Professor](https://www.youtube.com/channel/UCJk5KVaJVBEEl_jP5gKjoDw) -- who knew printing effective and accurate LEGO-compatible blocks was such a complicated topic!
 
 ### Disclaimer
 
