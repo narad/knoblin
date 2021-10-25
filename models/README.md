@@ -16,9 +16,13 @@ This includes an M2-spec screw to tighten around the servo or pot shaft if neces
 
 ## Servo support rails
 
-Now that the servos can be attached to the pedal/amp pots, the servo is capable of turning the knob, but only if held in place.  
+Now that the servos can be attached to the pedal/amp pots, the servo is capable of turning the knob, but only if held in place.  I designed the following rail for the Smraza 270 degree servos described [here](https://github.com/narad/robo-knob/tree/main/instructions#:~:text=use%20robo-knobs%3A-,Servos,-Servos%20are%20small).  The servos mount to a pair of rails, attaching with M2 or M3-sized bolts, and can be slid horizontally along the rail to match the spacing of a row of knobs.
 
 <img src="https://github.com/narad/robo-knob/blob/main/models/images/rails.png?raw=true" width="600">
+
+### Thinking in 3D
+
+An issue sometimes arises when pedals have knobs are not arranged in a single row.  Often times this means it's not possible to place a second rail support without it physically interfering with the first.  In these cases the only way is up!  By thinking of servos as occupying different "levels" and positioning a second rail above the first, we can build more flexible configurations of servos to handle most of these situations.  Designing 3D printable scaffolds to support all the various knob arrangements would be nearly impossible, so instead I designed the rails to support LEGO-style mounts (using templates from [printablebricks](https://printablebricks.com/)).  LEGO is modular, standardized, widely available, and relatively cheap for this application, so it seemed like a well-suited solution.  
 
 ## Caps for Knobs
 
