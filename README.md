@@ -11,7 +11,7 @@ Robo-knob is roughly partitioned into three sections:
 
 ### Overall Design
 
-<img src="https://github.com/narad/robo-knob/blob/main/images/robo-knobs-design.gif?raw=true" width="400">
+<img src="https://github.com/narad/robo-knob/blob/main/images/robo-knobs-design.png?raw=true" width="400">
 
 ### Reference
 
