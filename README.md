@@ -9,6 +9,10 @@ Robo-knob is roughly partitioned into three sections:
 - [3D models](https://github.com/narad/robo-knob/tree/main/models#readme), the adapters and mounts for connecting the controls to the music devices
 - [Code](https://github.com/narad/robo-knob/tree/main/knobs#readme), for issuing the control commands to the device (a mix of Python and C++/Arduino)
 
+### Overall Design
+
+<img src="https://github.com/narad/robo-knob/blob/main/images/robo-knobs-design.gif?raw=true" width="400">
+
 ### Reference
 
 If using robo-knob code in academic work, please cite the [paper](https://www.dafx.de/paper-archive/details.php?id=G8gchE7K8Itm8VPTGRtYyA) it was developed for:
