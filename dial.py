@@ -1,10 +1,24 @@
+# A class which wraps QDial in order
+# to paint number labels on ticks
+# primarily taken from answer here: 
+# https://stackoverflow.com/questions/63698714/
+
 from PyQt5 import QtWidgets, QtCore, QtGui
 
 
 class ValueDial(QtWidgets.QWidget):
-    _dialProperties = ('minimum', 'maximum', 'value', 'singleStep', 'pageStep',
-        'notchesVisible', 'tracking', 'wrapping', 
-        'invertedAppearance', 'invertedControls', 'orientation')
+    _dialProperties = (
+        'minimum', 
+        'maximum', 
+        'value', 
+        'singleStep', 
+        'pageStep',
+        'notchesVisible', 
+        'tracking', 
+        'wrapping', 
+        'invertedAppearance', 
+        'invertedControls', 
+        'orientation')
     _inPadding = 3
     _outPadding = 2
     valueChanged = QtCore.pyqtSignal(int)
@@ -98,12 +112,10 @@ class ValueDial(QtWidgets.QWidget):
         radius -= (self.offset / 2 + self._outPadding)
         invert = -1 if self.invertedAppearance() else 1
         if self.wrapping():
-            print("wrapping")
             angleRange = 360
             startAngle = 270
             rangeOffset = 0
         else:
-            print("not wrapping")
             angleRange = 300
             startAngle = 240 if invert > 0 else 300
             rangeOffset = 1
