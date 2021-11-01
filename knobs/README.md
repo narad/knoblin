@@ -1,6 +1,6 @@
-# robo-knob
+# Knoblin
 
-Robo-knob is a library of code, instructions, and model specifications for automated control of the knobs on musical devices, especially those found on guitar amplifiers and effects pedals.  
+Knoblin (Robotic KNOB control and LINkages) is a library of code, instructions, and model specifications for automated control of the knobs on musical devices, especially those found on guitar amplifiers and effects pedals.  
 
 While originally developed as a way of performing large-scale data gathering from musical devices, there are probably lots of other fun uses for it!  Some ideas that spring to mind are preset changes on analog equipment, changing device settings based on what is being played, changing timbre over the envelope of the notes being played, etc.)
 
@@ -11,7 +11,7 @@ Robo-knob is roughly partitioned into three sections:
 
 ### Reference
 
-If using robo-knob code in academic work, please cite the [paper](https://www.dafx.de/paper-archive/details.php?id=G8gchE7K8Itm8VPTGRtYyA) it was developed for:
+If using Knoblin code in academic work, please cite the [paper](https://www.dafx.de/paper-archive/details.php?id=G8gchE7K8Itm8VPTGRtYyA) it was developed for:
 
 ```
 @article{narad2021ampspace,
