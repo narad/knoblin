@@ -35,7 +35,10 @@ class Window(QWidget):
         # Servo selector
         col = len(field_names)+1
         cb = QComboBox()
-        cb.addItems(["180", "270", "360"])
+        cb.addItems([
+#            "180", 
+            "270"
+        ])
         self.fields['Servo'] = cb
         layout.addWidget(cb, 1, col, 1, 1)
         l = QLabel("Servo", self)
@@ -56,6 +59,7 @@ class Window(QWidget):
         self.dials = []
         self.degrees = []
         self.knob_infos = []
+
 
     def add_menu(self):
         # create menu
@@ -112,19 +116,21 @@ class Window(QWidget):
 
     def sliderMoved(self, i):
         print(i)
+        self.dials[i].value()
         info = self.knob_infos[i]
         self.controller.move_to_position(info['Knob Name'],
                              self.dials[i].value())
         print(f"Dial {i} value = {self.dials[i].value()}")
-        if self.is_valid_position(i):
-            self.change_knob_color(self.dials[i], 'white')
-        else:
-            self.change_knob_color(self.dials[i], 'red')
+        # if self.is_valid_position(i):
+        #     self.change_knob_color(self.dials[i], 'white')
+        # else:
+        #     self.change_knob_color(self.dials[i], 'red')
 
 
+    # May implement this at some point: for when servo is 180
+    # and dial position is outside servo range
     def is_valid_position(self, knob_index):
         info = self.knob_infos[knob_index]
-
 
 
     def change_knob_color(self, knob, color):
