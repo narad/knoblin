@@ -1,20 +1,7 @@
 import serial   
 from knobs.util.connect_arduino import get_port_name
+from knobs.knob import Knob
 
-# constants for 270 degree servo
-min_pos = 125
-max_pos = 575
-mid_pos = 350
-
-
-class Knob:
-
-    def __init__(self, name, servo_id, min_position, max_position, last_position=None):
-        self.name = name
-        self.servo_id = servo_id
-        self.min_position = min_position
-        self.max_position = max_position
-        self.last_position = last_position
 
 
 class KnobServoController:
@@ -48,14 +35,15 @@ class KnobServoController:
                                          max_position)
 
     from time import sleep
-    def move_to_position(self, knob_name, position, increment=5):
+    def move_to_position(self, knob_name, position, delay=0):
         knob = self.servo_map[knob_name]
         print(knob)
         print("pos: ", position)
         position = 125 + (position * 40)
         print("-> " + str(position))
-        cmd = f"{knob.servo_id}:{position}"
+        cmd = f"{knob.servo_id}:{position}:{delay}"
         print(cmd)
+        print(cmd.encode())
         self.arduino.write(cmd.encode())
 
         # try:
@@ -89,11 +77,12 @@ class KnobServoController:
         self.move_servo(None, pos)
 
 
-    def move_servo(self, servo, position):
+    def move_servo(self, servo, position, delay=0):
         print(f"Moving servo {servo} to position {position}")        
-        command = f"{servo}:{position}"
+        command = f"{servo}:{position}:{delay}"
         print(command)
         command = command.encode()
+        print(command)
         self.arduino.write(command)
 
 
