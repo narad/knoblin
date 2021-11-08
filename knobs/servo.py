@@ -6,7 +6,11 @@ mid_pos = 350
 
 class Servo270:
 
-	def command_code(percent_rotation):
+	def __init__(self, servo_id):
+		self.servo_id = servo_id
+
+
+	def command_code(self, percent_rotation):
 		ratio = (max_pos - min_pos) / 360
 		return min_pos + (percent_rotation * ratio)
 

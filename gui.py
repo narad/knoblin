@@ -118,7 +118,7 @@ class Window(QWidget):
         print(i)
         self.dials[i].value()
         info = self.knob_infos[i]
-        self.controller.move_to_position(info['Knob Name'],
+        self.controller.move(info['Knob Name'],
                              self.dials[i].value())
         print(f"Dial {i} value = {self.dials[i].value()}")
         # if self.is_valid_position(i):
