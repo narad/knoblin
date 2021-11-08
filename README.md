@@ -1,6 +1,8 @@
 # Knoblin
 
-<img src="https://github.com/narad/knoblin/blob/main/images/knoblin.png" width=600>
+<p align="center">
+<img src="https://github.com/narad/knoblin/blob/main/images/knoblin.png" width=500>
+</p>
 
 The Knoblin is a library of code, instructions, and model specifications for MIDI control of the knobs on musical devices, especially those found on guitar amplifiers and effects pedals.  
 
@@ -13,7 +15,9 @@ Knoblin is roughly partitioned into three sections:
 
 ### Overall Design
 
+<p align="center">
 <img src="https://github.com/narad/robo-knob/blob/main/images/robo-knobs-design.png?raw=true" width="400">
+</p>
 
 ### Reference
 
