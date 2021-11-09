@@ -1,20 +1,17 @@
 
-# constants for 270 degree servo
-min_pos = 125
-max_pos = 575
-mid_pos = 350
 
 class Servo270:
+	# constants for 270 degree servo
+	min_pos = 125
+	max_pos = 575
+	mid_pos = 350
+
 
 	def __init__(self, servo_id):
 		self.servo_id = servo_id
 
 
 	def command_code(self, percent_rotation):
-		ratio = (max_pos - min_pos) / 360
-		return min_pos + (percent_rotation * ratio)
-
-
-# in gui change a dial
-# dial sends the knob value
-# knob-value -> servo-command
+		ratio = (self.max_pos - self.min_pos) / 360
+		new_pos = (percent_rotation * 360 * ratio) + self.min_pos
+		return int(new_pos)

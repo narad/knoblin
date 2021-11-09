@@ -6,6 +6,13 @@ class Knob:
         self.max_position = max_position
         self.last_position = last_position
 
+    def extent(self):
+        return self.max_position - self.min_position
+
+    def mid_position(self):
+        return self.min_position + (self.extent() / 2)
+
+
 
 class ActuatedKnob:
 
@@ -17,10 +24,21 @@ class ActuatedKnob:
 
     def move(self, position, delay=0):
         print(f"{self.knob.name}: -> {position}/{self.knob.max_position}")
-        position = 125 + (position * 40)
-        cmd = f"{self.servo.servo_id}:{position}" #:{delay}"
+
+        # What percent of the knob rotation is it?
+        percent_rotation = (position-1) / self.knob.extent()
+
+        # Get corresponding servo control command
+        pos_code = self.servo.command_code(percent_rotation)
+
+        # Encode and send command via Arduino
+        cmd = f"{self.servo.servo_id}:{pos_code}" #:{delay}"
         print(cmd)
-        print(cmd.encode())
+        print()
         self.arduino.write(cmd.encode())
+
+
+    def center(self):
+        self.move(self.knob.mid_position())
 
 

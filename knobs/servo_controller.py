@@ -2,7 +2,7 @@ import serial
 from knobs.util.connect_arduino import get_port_name
 from knobs.knob import Knob, ActuatedKnob
 from knobs.servo import Servo270
-
+from time import sleep
 
 
 class KnobServoController:
@@ -20,11 +20,9 @@ class KnobServoController:
 
 
     def add_knob(self, knob_name, servo_id, min_position, max_position):
-        print(servo_id)
         knob = Knob(knob_name,
-                 servo_id,
-                 min_position,
-                 max_position)
+                     min_position,
+                     max_position)
         servo = Servo270(servo_id)
         self.servo_map[knob_name] = ActuatedKnob(knob=knob,
                                                  servo=servo,
@@ -34,6 +32,16 @@ class KnobServoController:
     def move(self, knob_name, position, delay=0):
         knob = self.servo_map[knob_name]
         knob.move(position)
+
+
+    def center_knobs(self):
+        for aknob in self.servo_map.values():
+            print(f"centering knob {aknob.knob.name}...")
+            aknob.center()
+            sleep(2)
+
+
+
 
 
 if __name__ == '__main__':
