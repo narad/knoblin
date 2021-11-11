@@ -47,17 +47,20 @@ class KnoblinGUI(QWidget):
 
     def add_main_buttons(self, layout, row=1):
         # Add buttons to top row
-        center_button = QPushButton("Add Knob")
-        center_button.clicked.connect(self.add_dial)
-        layout.addWidget(center_button, row, 0, 1, 1)
+        add_knob_button = QPushButton("Add Knob")
+        add_knob_button.clicked.connect(self.add_dial)
+        layout.addWidget(add_knob_button, row, 0, 1, 1)
         # Button to center servos
         center_button = QPushButton("Center Servos")
+        center_button.setToolTip('Move all servos to their attachment position.')
         center_button.clicked.connect(self.center_servos)
         layout.addWidget(center_button, row, 1, 1, 1)
         # Button to save a preset
-        center_button = QPushButton("Save Preset")
-        center_button.clicked.connect(self.save_preset)
-        layout.addWidget(center_button, row, 2, 1, 1)
+        preset_button = QPushButton("Save Preset")
+        preset_button.setEnabled(False)
+        preset_button.clicked.connect(self.save_preset)
+        layout.addWidget(preset_button, row, 2, 1, 1)
+        self.preset_button = preset_button
 
 
     def add_preset_row(self, layout, row=2):
@@ -119,6 +122,9 @@ class KnoblinGUI(QWidget):
                                      min_position=min_val,
                                      max_position=max_val)
 
+            # Allow for presets to be saved
+            self.preset_button.setEnabled(True)
+
 
 
     def change_knob(self, i):
@@ -168,13 +174,14 @@ class KnoblinGUI(QWidget):
 
 
     def save_preset(self):
-        name, ok = QInputDialog.getText(self, 'Add Preset', 'Name for Preset:')
-        if ok:
-            settings = [(self.knob_infos[i]['Knob Name'], self.dials[i].value()) for i in range(len(self.dials))]
-            print(settings)
-            self.presets[name] = settings
-            self.presets_box.addItems([name])
-            self.presets_box.setCurrentIndex(len(self.presets)-1)
+        if len(self.dials) > 0:
+            name, ok = QInputDialog.getText(self, 'Add Preset', 'Name for Preset:')
+            if ok:
+                settings = [(self.knob_infos[i]['Knob Name'], self.dials[i].value()) for i in range(len(self.dials))]
+                print(settings)
+                self.presets[name] = settings
+                self.presets_box.addItems([name])
+                self.presets_box.setCurrentIndex(len(self.presets)-1)
 
 
 
@@ -184,25 +191,39 @@ class KnobDialog(QDialog):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-
-#        self.setStyleSheet(stylesheet)
         
         self.knob_name = QLineEdit(self)
         self.min_value = QLineEdit(self)
         self.max_value = QLineEdit(self)
-        self.safety_margin = QLineEdit(self)
+#        self.safety_margin = QLineEdit(self)
 
-        # Validators so only int can be entered
+        # Validators so only Int can be entered
         self.min_value.setValidator(QtGui.QIntValidator())
         self.max_value.setValidator(QtGui.QIntValidator())
-        self.safety_margin.setValidator(QtGui.QIntValidator(0,30))
+#        self.safety_margin.setValidator(QtGui.QIntValidator(0,30))
 
-        cb = QComboBox(self)
-        cb.addItems([
+        self.servo_type = QComboBox(self)
+        self.servo_type.addItems([
 #            "180", 
             "270"
         ])
-        self.servo_type = cb #QLineEdit(self)
+
+        self.servo_attach = QComboBox(self)
+        self.servo_attach.addItems([
+            "min", 
+            "max",
+            "center"
+        ])
+
+        self.safety_margin = QComboBox(self)
+        self.safety_margin.addItems([
+            "0", 
+            "5",
+            "10",
+            "15",
+            "20"
+        ])
+
         buttonBox = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel, self);
 
         layout = QFormLayout(self)
@@ -210,6 +231,7 @@ class KnobDialog(QDialog):
         layout.addRow("Minimum Value", self.min_value)
         layout.addRow("Maximum Value", self.max_value)
         layout.addRow("Servo Type", self.servo_type)
+        layout.addRow("Servo Attachment", self.servo_attach)
         layout.addRow("Safety Margin", self.safety_margin)
         layout.addWidget(buttonBox)
 
