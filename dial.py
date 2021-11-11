@@ -52,6 +52,11 @@ class ValueDial(QtWidgets.QWidget):
 
         self.updateSize()
 
+    def center(self):
+        c = (self.maximum() - self.minimum()) / 2
+        print("center: ", c)
+        self.setValue(c)
+
     def inPadding(self):
         return self._inPadding
 

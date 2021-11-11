@@ -1,6 +1,6 @@
 class Knob:
 
-    def __init__(self, name, min_position, max_position, last_position=None):
+    def __init__(self, name: str, min_position: int, max_position: int, last_position:int=None):
         self.name = name
         self.min_position = min_position
         self.max_position = max_position
@@ -25,11 +25,15 @@ class ActuatedKnob:
     def move(self, position, delay=0):
         print(f"{self.knob.name}: -> {position}/{self.knob.max_position}")
 
+        print(self.knob.extent())
+
         # What percent of the knob rotation is it?
-        percent_rotation = (position-1) / self.knob.extent()
+        percent_rotation = (position-self.knob.min_position) / self.knob.extent()
+        print("percent rotation: ", percent_rotation)
 
         # Get corresponding servo control command
         pos_code = self.servo.command_code(percent_rotation)
+        print("position code: ", pos_code)
 
         # Encode and send command via Arduino
         cmd = f"{self.servo.servo_id}:{pos_code}" #:{delay}"

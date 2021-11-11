@@ -4,22 +4,23 @@ from knobs.knob import Knob, ActuatedKnob
 from knobs.servo import Servo270
 from time import sleep
 
+from typing import List
 
 class KnobServoController:
 
-    def __init__(self, knobs=[], port_name=None):
+    def __init__(self, knobs: List[Knob]=[], port_name: str=None) -> None:
         # Acquire port ID
         if port_name is None:
             port_name = get_port_name()
 
         # Setup Arduino/Serial connection
-        self.arduino = serial.Serial(port_name, 9600)   
+        self.arduino = serial.Serial(port_name, 9600)
 
         # Create name->knob mapping
         self.servo_map = { knob.name : knob for knob in knobs }
 
 
-    def add_knob(self, knob_name, servo_id, min_position, max_position):
+    def add_knob(self, knob_name: str, servo_id: int, min_position: int, max_position:int) -> None:
         knob = Knob(knob_name,
                      min_position,
                      max_position)
@@ -29,7 +30,7 @@ class KnobServoController:
                                                  arduino=self.arduino)
 
 
-    def move(self, knob_name, position, delay=0):
+    def move(self, knob_name: str, position: int, delay:int=0) -> None:
         knob = self.servo_map[knob_name]
         knob.move(position)
 
@@ -46,8 +47,21 @@ class KnobServoController:
 
 if __name__ == '__main__':
     factory = KnobControllerFactory()
-    controller = factory.make_controller()  #KnobServoController()
+    controller = factory.make_controller()  
     controller.loop()
+
+
+
+
+
+
+
+
+
+#KnobServoController()
+
+
+
 
 
 

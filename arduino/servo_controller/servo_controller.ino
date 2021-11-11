@@ -47,7 +47,7 @@ void loop() {
     // Convert to int
     servo = c_servo.toInt();
     pos = c_pos.toInt();  
-//    delay_time = c_delay.toInt(); deprecated
+//    delay_time = c_delay.toInt(); local delay time deprecated
 
     // Move the servo
     if (last == -1 || delay_time == 0) {
@@ -70,38 +70,3 @@ void loop() {
     }
   }
 }
-
-
-
-//   int myPins[] = {2, 4, 8, 3, 6};
-
-  //  delay(1000);
-
-
-
-
-//    Serial.print("Servo in position: ");  
-//    Serial.println(inByte);
-
-
-    // Serial.println(c_servo);
-    // Serial.println(c_pos);
-
- //inByte.toInt();   // change datatype from string to integer  
-//    myservo.write(pos);     // move servo
-
-//
-//// the code inside loop() has been updated by Robojax
-//void loop() {
-//
-//    pwm.setPWM(0, 0, 125 );
-//  delay(500);
-//    pwm.setPWM(0, 0, 255 );
-//  delay(500);
-//    pwm.setPWM(0, 0, 450 );
-//  delay(500);
-//    pwm.setPWM(0, 0, 575 );
-//  delay(500); 
-//
-// 
-//}
