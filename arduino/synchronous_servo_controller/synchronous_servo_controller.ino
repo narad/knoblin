@@ -49,7 +49,7 @@ void setup() {
   // Set servos to a default position
   // (mainly so they begin knowing where they are located)
   for (servo = 0; servo < num_servos; servo += 1) {
-    Serial.println(servo);
+//    Serial.println(servo);
     pwm.setPWM(servo, 0, default_pos);
     // These could be big direct moves so they can require longer
     // delay times
@@ -63,7 +63,7 @@ void setup() {
 void loop() {
   if (Serial.available()) {
     message = Serial.readStringUntil('\n');
-    Serial.println(message);
+//    Serial.println(message);
     moveServos(message);
   }
 }
@@ -78,7 +78,7 @@ void moveServos(const String& message) {
   int i = 0;
   for (i = 0; i < num_message_servos; i++) {
     targets[i] = message.substring(i * 3, (i * 3) + 3).toInt();
-    Serial.println(targets[i]);
+//    Serial.println(targets[i]);
   }
 
   // Check how close we are to the targets
