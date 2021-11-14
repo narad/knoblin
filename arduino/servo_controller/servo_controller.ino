@@ -11,8 +11,8 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 // want these to be as small/large as possible without hitting the hard stop
 // for max range. You'll have to tweak them as necessary to match the servos you
 // have!
-#define SERVOMIN  125 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX  575 // this is the 'maximum' pulse length count (out of 4096)
+// #define SERVOMIN  125 // this is the 'minimum' pulse length count (out of 4096)
+// #define SERVOMAX  575 // this is the 'maximum' pulse length count (out of 4096)
 
 
 String inByte;  // byte read from port, can come from Python script
@@ -26,6 +26,7 @@ int delay_time = 0; // delay between servo move increments
 
 
 void setup() {
+  Serial.setTimeout(250); // drastically reduce Serial.readStringUntil time
   Serial.begin(9600);
   Serial.println("Initializing.");
   pwm.begin();

@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QThreadPool
 
 from dial import ValueDial
 import sys
@@ -29,11 +29,16 @@ class KnoblinGUI(QWidget):
         self.add_main_buttons(layout, row=1)
         self.add_preset_row(layout, row=2)
 
-        # Set size hints
+        # Set size hints for rows
         layout.setRowStretch(1, 1)
         layout.setRowStretch(2, 1)
         layout.setRowStretch(3, 2)
         layout.setRowStretch(4, 1)
+
+        # and size hints for cols
+        for i in range(3):
+            layout.setColumnMinimumWidth(i, 120)
+
 
         # Setup back-end
         self.controller = KnobServoController()
@@ -44,6 +49,10 @@ class KnoblinGUI(QWidget):
         self.knob_infos = []
         self.presets = dict()
 
+        # Pool for multi-threading the back-end processes
+        self.threadpool = QThreadPool()
+
+
 
     def add_main_buttons(self, layout, row=1):
         # Add buttons to top row
@@ -51,10 +60,10 @@ class KnoblinGUI(QWidget):
         add_knob_button.clicked.connect(self.add_dial)
         layout.addWidget(add_knob_button, row, 0, 1, 1)
         # Button to center servos
-        center_button = QPushButton("Center Servos")
-        center_button.setToolTip('Move all servos to their attachment position.')
-        center_button.clicked.connect(self.center_servos)
-        layout.addWidget(center_button, row, 1, 1, 1)
+        calibrate_button = QPushButton("Calibrate Servos")
+        calibrate_button.setToolTip('Move all servos to their attachment position.')
+        calibrate_button.clicked.connect(self.calibrate_servos)
+        layout.addWidget(calibrate_button, row, 1, 1, 1)
         # Button to save a preset
         preset_button = QPushButton("Save Preset")
         preset_button.setEnabled(False)
@@ -64,7 +73,9 @@ class KnoblinGUI(QWidget):
 
 
     def add_preset_row(self, layout, row=2):
-        layout.addWidget(QLabel("Load Preset:", self), row, 0, 1, 1)
+        preset_label = QLabel("Load Preset:", self)
+        preset_label.setAlignment(Qt.AlignRight)
+        layout.addWidget(preset_label, row, 0, 1, 1)
         # Dropdown select
         self.presets_box = QComboBox(self)
         self.presets_box.currentIndexChanged.connect(lambda val: self.change_preset(val))
@@ -89,38 +100,46 @@ class KnoblinGUI(QWidget):
     def add_dial(self):
         i = len(self.dials)
 
-        dialog = KnobDialog()
+        dialog = KnobDialog(num_knobs=len(self.dials))
         dialog.setStyleSheet(self.styleSheet())
         if dialog.exec():
-            name, min_val, max_val, servo_type = dialog.getInputs()
-            min_val = int(min_val)
-            max_val = int(max_val)
+            knob_name, knob_type, min_val, max_val, servo_type, attachment = dialog.getInputs()
 
             d = ValueDial() #QDial()
             d.setMinimum(min_val)
             d.setMaximum(max_val)
             d.setFixedWidth(80)
+            d.setValue(int((max_val - min_val) / 2))
+
+            d.valueChanged.connect(lambda val, i=i: self.change_knob(i))
+
+            self.dials.append(d)
+
+            self.layout.addWidget(d, self.knob_row, i, 1, 1)
+            self.layout.setColumnMinimumWidth(len(self.dials), 120)
 
             self.knob_infos.append({
-                'Knob Name': name, 
+                'Knob Name': knob_name,
+                'Knob Type': knob_type,
                 'Min Value': min_val, 
                 'Max Value': max_val,
-                'Servo': servo_type
+                'Servo': servo_type,
+                'Attachment': attachment
                 })
-            d.valueChanged.connect(lambda val, i=i: self.change_knob(i))
-            self.dials.append(d)
-            self.layout.addWidget(d, self.knob_row, i, 1, 1)
 
-            l = QLabel(name.center(20), self)
+
+            l = QLabel(knob_name.center(20), self)
             l.setFixedWidth(80)
             l.setAlignment(Qt.AlignVCenter)
             self.layout.addWidget(l, self.knob_row+1, i, 1, 1)
 
             # Add the corresponding knob in the controller
-            self.controller.add_knob(name,
+            self.controller.add_knob(knob_name,
+                                     knob_type,
                                      servo_id = len(self.dials)-1,
                                      min_position=min_val,
-                                     max_position=max_val)
+                                     max_position=max_val,
+                                     attachment=attachment)
 
             # Allow for presets to be saved
             self.preset_button.setEnabled(True)
@@ -128,27 +147,17 @@ class KnoblinGUI(QWidget):
 
 
     def change_knob(self, i):
+        print("=================================")
         print(i)
         self.dials[i].value()
         info = self.knob_infos[i]
         self.controller.move(info['Knob Name'],
                              self.dials[i].value())
         print(f"Dial {i} value = {self.dials[i].value()}")
-        # if self.is_valid_position(i):
-        #     self.change_knob_color(self.dials[i], 'white')
-        # else:
-        #     self.change_knob_color(self.dials[i], 'red')
-
-
-    def change_preset(self, i):
-        if len(self.presets) > 1:
-            for knob_name, knob_value in self.presets[self.presets_box.currentText()]:
-                self.controller.move(knob_name, knob_value)
-                sleep(2)
-                # Have to get the dial ID, not great indexes for this
-                did = [i for i in range(len(self.dials)) if self.knob_infos[i]['Knob Name'] == knob_name][0]
-                self.dials[did].setValue(knob_value)
-
+        if self.controller.is_valid(info['Knob Name'], self.dials[i].value()):
+            self.change_knob_color(self.dials[i], 'white')
+        else:
+            self.change_knob_color(self.dials[i], 'red')
 
 
     # May implement this at some point: for when servo is 180
@@ -165,19 +174,49 @@ class KnoblinGUI(QWidget):
                                 "}"
                         )
 
-    def center_servos(self):
-        for dial in self.dials:
-            dial.center()
 
-        self.controller.center_knobs()
-        self.controller.center_knobs()
+    def change_preset(self, i):
+        print("=================================")
+        if len(self.presets) > 1:
+            found_preset = self.presets[self.presets_box.currentText()]
+            print(found_preset)
+            self.controller.move_all(found_preset)
+            for knob_name, knob_value in self.presets[self.presets_box.currentText()].items():
+                # self.controller.move(knob_name, knob_value)
+#                sleep(2)
+                # Have to get the dial ID, not great indexes for this
+                did = [i for i in range(len(self.dials)) if self.knob_infos[i]['Knob Name'] == knob_name][0]
+                self.dials[did].blockSignals(True)
+                self.dials[did].setValue(knob_value)
+                self.dials[did].blockSignals(False)
+
+
+    def calibrate_servos(self):
+        print("=================================")
+        self.controller.move_to_calibration()
+#         name2pos = { info['Knob Name']: 5 for info in self.knob_infos }
+# #        cmd_list = [(info['Knob Name'], 350) for info in self.knob_infos]
+#         self.controller.move_all(name2pos)
+        for dial, info in zip(self.dials, self.knob_infos):
+            dial.blockSignals(True)
+            if info['Attachment'] == 'max':
+                dial.setValue(info['Max Value'])
+            elif info['Attachment'] == 'min':
+                dial.setValue(info['Min Value'])
+            else: # centered
+                dial.setValue(int((info['Max Value'] - info['Min Value']) / 2))
+            dial.blockSignals(False)
+
+
+        # self.controller.center_knobs()
+        # self.controller.center_knobs()
 
 
     def save_preset(self):
         if len(self.dials) > 0:
             name, ok = QInputDialog.getText(self, 'Add Preset', 'Name for Preset:')
             if ok:
-                settings = [(self.knob_infos[i]['Knob Name'], self.dials[i].value()) for i in range(len(self.dials))]
+                settings = { self.knob_infos[i]['Knob Name']: self.dials[i].value() for i in range(len(self.dials)) }
                 print(settings)
                 self.presets[name] = settings
                 self.presets_box.addItems([name])
@@ -189,33 +228,59 @@ class KnoblinGUI(QWidget):
 
 class KnobDialog(QDialog):
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, num_knobs=0):
         super().__init__(parent)
         
+        # Knob Name
         self.knob_name = QLineEdit(self)
+        self.knob_name.setText(f"Knob {num_knobs+1}")
+
+        # Minimum Knob Value
         self.min_value = QLineEdit(self)
+        self.min_value.setToolTip('The minimum value (lowest position) of the knob.')
+        self.min_value.setText("0")
+
+        # Maximum Knob Value
         self.max_value = QLineEdit(self)
-#        self.safety_margin = QLineEdit(self)
+        self.max_value.setToolTip('The maximum value (highest position) of the knob.')
+        self.max_value.setText("10")
 
         # Validators so only Int can be entered
         self.min_value.setValidator(QtGui.QIntValidator())
         self.max_value.setValidator(QtGui.QIntValidator())
 #        self.safety_margin.setValidator(QtGui.QIntValidator(0,30))
 
+        self.knob_type = QComboBox(self)
+        self.knob_type.setToolTip('The type of servo being attached to this knob.')
+        self.knob_type.addItems([
+            "270",
+            "280",
+            "290",
+            "300",
+            "310",
+            "320"
+        ])
+        self.knob_type.setCurrentIndex(3)
+
         self.servo_type = QComboBox(self)
+        self.servo_type.setToolTip('The type of servo being attached to this knob.')
         self.servo_type.addItems([
 #            "180", 
             "270"
         ])
 
         self.servo_attach = QComboBox(self)
+        self.servo_attach.setToolTip('Alignment point between knob and servo.  Both devices should be in this position during attachment.')
         self.servo_attach.addItems([
-            "min", 
-            "max",
-            "center"
+            "max", 
+            "center",
+            "min"
         ])
+        self.servo_attach.setCurrentIndex(0)
+
 
         self.safety_margin = QComboBox(self)
+        self.safety_margin.setToolTip('Degree of margin between the min/max position of the servo and what it is physically capable of (can prevent over-turning the knob when servo is beyond spec).')
         self.safety_margin.addItems([
             "0", 
             "5",
@@ -230,6 +295,7 @@ class KnobDialog(QDialog):
         layout.addRow("Knob Name", self.knob_name)
         layout.addRow("Minimum Value", self.min_value)
         layout.addRow("Maximum Value", self.max_value)
+        layout.addRow("Knob Type", self.knob_type)
         layout.addRow("Servo Type", self.servo_type)
         layout.addRow("Servo Attachment", self.servo_attach)
         layout.addRow("Safety Margin", self.safety_margin)
@@ -239,14 +305,12 @@ class KnobDialog(QDialog):
         buttonBox.rejected.connect(self.reject)
 
     def getInputs(self):
-        return (self.knob_name.text(), 
-                self.min_value.text(),
-                self.max_value.text(),
-                self.servo_type.currentText())
-
-
-
-
+        return (self.knob_name.text(),
+                int(self.knob_type.currentText()),
+                int(self.min_value.text()),
+                int(self.max_value.text()),
+                int(self.servo_type.currentText()),
+                self.servo_attach.currentText())
 
 
 
@@ -262,58 +326,4 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
-
-
-
-
-
-
-        # layout.setRowStretch(0, 1)
-        # layout.setRowStretch(1, 1)
-        # layout.setRowStretch(2, 3)
-#        layout.setRowStretch(4, 3)
-
-
-#         field_names = ['Knob Name', 'Min Value', 'Max Value']
-#         self.fields = dict()
-#         for col, fn in enumerate(field_names):
-#             # Field on top row
-#             f = QLineEdit(self)
-#             f.setFixedWidth(80)
-#             layout.addWidget(f, 1, col, 1, 1)
-
-#             # Label on second row
-#             l = QLabel(fn, self)
-#             l.setFixedWidth(80)
-#             layout.addWidget(l, 2, col, 1, 1)
-
-#             self.fields[fn] = f
-
-#         # Servo selector
-#         col = len(field_names)+1
-#         cb = QComboBox()
-#         cb.addItems([
-# #            "180", 
-#             "270"
-#         ])
-#         self.fields['Servo'] = cb
-#         layout.addWidget(cb, 1, col, 1, 1)
-#         l = QLabel("Servo", self)
-#         l.setFixedWidth(80)
-#         layout.addWidget(l, 2, col, 1, 1)
-
-#         # Set default min/max
-#         self.fields['Min Value'].setText("1")
-#         self.fields['Max Value'].setText("11")
-
-#         # Button to add a knob on the far right of first row
-#         self.button = QPushButton('Add Knob')
-#         self.button.clicked.connect(self.add_dial)
-#         layout.addWidget(self.button, 1, len(field_names)+2, 1, 1)
-
-#         # Row 2 & 3 reserved for future knobs and labels
 
