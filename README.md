@@ -6,12 +6,19 @@
 
 The Knoblin is a library of code, instructions, and model specifications for MIDI control of the knobs on musical devices, especially those found on guitar amplifiers and effects pedals.  
 
+
 While originally developed as a way of performing large-scale data gathering from musical devices (for this [paper](https://github.com/narad/robo-knob/blob/main/readme.md#reference), there are probably lots of other fun uses for it!  Some ideas that spring to mind are preset changes on analog equipment, changing device parameters based on what is being played, changing them over the duration of the envelope of the notes being played, etc.)
 
 Knoblin is roughly partitioned into three sections:
 - [Material requirements and instructions](https://github.com/narad/robo-knob/tree/main/instructions#readme), the basic components you'll need to buy to setup the interface
 - [3D models](https://github.com/narad/robo-knob/tree/main/models#readme), the adapters and mounts for connecting the controls to the music devices
 - [Code](https://github.com/narad/robo-knob/tree/main/knobs#readme), for issuing the control commands to the device (a mix of Python and C++/Arduino)
+
+<p align="center">
+<img src="https://lh3.googleusercontent.com/pw/AM-JKLUU6OLRZBpZZ1fSlGHTyd6Nc_3qeryEBcGChPrbRdNDIDkH2HIPs7jZ8heEMR8PKg6PJMBVfRFL-BTs9V7O7Xoz1YdXrvX4BglB_NvO-Hf2uskDHJ_7cejyRkgrizWHWm1mQj7DkOdWZwco03XfZJbG=w1695-h1736-no" alt="drawing" width="400"/>
+</p>
+
+Watch/Listen to Knoblin in action in the [YouTube Demo](https://youtu.be/dsk65mj1pfU)
 
 ### Overall Design
 
