@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>servo_controller &#8212; knoblin  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for servo_controller</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">serial</span>   
+<span class="kn">from</span> <span class="nn">util.connect_arduino</span> <span class="kn">import</span> <span class="n">get_port_name</span>
+<span class="kn">from</span> <span class="nn">knob</span> <span class="kn">import</span> <span class="n">Knob</span><span class="p">,</span> <span class="n">ActuatedKnob</span>
+<span class="kn">from</span> <span class="nn">servo</span> <span class="kn">import</span> <span class="n">Servo270</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+
+<span class="sd">&quot;&quot;&quot;A one line summary of the module or program, terminated by a period.</span>
+
+<span class="sd">Leave one blank line.  The rest of this docstring should contain an</span>
+<span class="sd">overall description of the module or program.  Optionally, it may also</span>
+<span class="sd">contain a brief description of exported classes and functions and/or usage</span>
+<span class="sd">examples.</span>
+
+<span class="sd">  Typical usage example:</span>
+
+<span class="sd">  foo = ClassFoo()</span>
+<span class="sd">  bar = foo.FunctionBar()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="KnobServoController"><a class="viewcode-back" href="../servo_controller.html#servo_controller.KnobServoController">[docs]</a><span class="k">class</span> <span class="nc">KnobServoController</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knobs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ActuatedKnob</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span> <span class="n">port_name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Acquire port ID</span>
+        <span class="k">if</span> <span class="n">port_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">port_name</span> <span class="o">=</span> <span class="n">get_port_name</span><span class="p">()</span>
+
+        <span class="c1"># Setup Arduino/Serial connection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arduino</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">port_name</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span>
+
+        <span class="c1"># Create indexes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name2knob</span> <span class="o">=</span> <span class="p">{</span> <span class="n">knob</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">knob</span> <span class="k">for</span> <span class="n">knob</span> <span class="ow">in</span> <span class="n">knobs</span> <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id2knob</span> <span class="o">=</span> <span class="p">{</span> <span class="n">knob</span><span class="o">.</span><span class="n">servo</span><span class="o">.</span><span class="n">servo_id</span> <span class="p">:</span> <span class="n">knob</span> <span class="k">for</span> <span class="n">knob</span> <span class="ow">in</span> <span class="n">knobs</span> <span class="p">}</span>
+
+
+<div class="viewcode-block" id="KnobServoController.knobs"><a class="viewcode-back" href="../servo_controller.html#servo_controller.KnobServoController.knobs">[docs]</a>    <span class="k">def</span> <span class="nf">knobs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num knobs = &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_knobs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">id2knob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_knobs</span><span class="p">())]</span></div>
+
+
+<div class="viewcode-block" id="KnobServoController.num_knobs"><a class="viewcode-back" href="../servo_controller.html#servo_controller.KnobServoController.num_knobs">[docs]</a>    <span class="k">def</span> <span class="nf">num_knobs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id2knob</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KnobServoController.add_knob"><a class="viewcode-back" href="../servo_controller.html#servo_controller.KnobServoController.add_knob">[docs]</a>    <span class="k">def</span> <span class="nf">add_knob</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knob_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">knob_type</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">servo_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">min_position</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_position</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">attachment</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">knob</span> <span class="o">=</span> <span class="n">Knob</span><span class="p">(</span><span class="n">knob_name</span><span class="p">,</span>
+                    <span class="n">knob_type</span><span class="p">,</span>
+                    <span class="n">min_position</span><span class="p">,</span>
+                    <span class="n">max_position</span><span class="p">)</span>
+        <span class="n">servo</span> <span class="o">=</span> <span class="n">Servo270</span><span class="p">(</span><span class="n">servo_id</span><span class="p">)</span>
+        <span class="n">aknob</span> <span class="o">=</span> <span class="n">ActuatedKnob</span><span class="p">(</span><span class="n">knob</span><span class="o">=</span><span class="n">knob</span><span class="p">,</span>
+                             <span class="n">servo</span><span class="o">=</span><span class="n">servo</span><span class="p">,</span>
+                             <span class="n">attachment</span><span class="o">=</span><span class="n">attachment</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name2knob</span><span class="p">[</span><span class="n">knob_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">aknob</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id2knob</span><span class="p">[</span><span class="n">servo</span><span class="o">.</span><span class="n">servo_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">aknob</span></div>
+
+
+<div class="viewcode-block" id="KnobServoController.move"><a class="viewcode-back" href="../servo_controller.html#servo_controller.KnobServoController.move">[docs]</a>    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knob_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">move_all</span><span class="p">({</span><span class="n">knob_name</span><span class="p">:</span> <span class="n">position</span><span class="p">})</span></div>
+        <span class="c1"># knob = self.name2knob[knob_name]</span>
+        <span class="c1"># knob.move(position)</span>
+
+
+<div class="viewcode-block" id="KnobServoController.move_all"><a class="viewcode-back" href="../servo_controller.html#servo_controller.KnobServoController.move_all">[docs]</a>    <span class="k">def</span> <span class="nf">move_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name2pos</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="nb">int</span><span class="p">],</span> <span class="n">delay</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">name2pos</span><span class="p">)</span>
+        <span class="n">cmd_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id2knob</span><span class="p">)):</span>
+            <span class="n">knob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id2knob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="n">name2pos</span><span class="p">[</span><span class="n">knob</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+                <span class="n">cmd_code</span> <span class="o">=</span> <span class="n">knob</span><span class="o">.</span><span class="n">command_from_position</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">cmd_code</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">cmd_code</span><span class="p">)</span>
+            <span class="n">cmd_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cmd_code</span><span class="si">:</span><span class="s2">03</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">cmd_str</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arduino</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cmd_str</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="KnobServoController.move_to_calibration"><a class="viewcode-back" href="../servo_controller.html#servo_controller.KnobServoController.move_to_calibration">[docs]</a>    <span class="k">def</span> <span class="nf">move_to_calibration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in move to calib&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">knobs</span><span class="p">())</span>
+        <span class="n">name2pos</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">knob</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">knobs</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">knob</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">name2pos</span><span class="p">[</span><span class="n">knob</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">knob</span><span class="o">.</span><span class="n">calibration_position</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calibration dict: &quot;</span><span class="p">,</span> <span class="n">name2pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">move_all</span><span class="p">(</span><span class="n">name2pos</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KnobServoController.is_valid"><a class="viewcode-back" href="../servo_controller.html#servo_controller.KnobServoController.is_valid">[docs]</a>    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knob_name</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name2knob</span><span class="p">[</span><span class="n">knob_name</span><span class="p">]</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">position</span><span class="p">)</span></div></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">knoblin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controller_factory.html">controller_factory module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dial.html">dial module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui.html">gui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knob.html">knob module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../servo.html">servo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../servo_controller.html">servo_controller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sweep.html">sweep module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test_servo_controller.html">test_servo_controller module</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

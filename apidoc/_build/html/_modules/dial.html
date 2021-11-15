@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dial &#8212; knoblin  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for dial</h1><div class="highlight"><pre>
+<span></span><span class="c1"># A class which wraps QDial in order</span>
+<span class="c1"># to paint number labels on ticks</span>
+<span class="c1"># primarily taken from answer here: </span>
+<span class="c1"># https://stackoverflow.com/questions/63698714/</span>
+
+<span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">QtWidgets</span><span class="p">,</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
+
+
+<div class="viewcode-block" id="ValueDial"><a class="viewcode-back" href="../dial.html#dial.ValueDial">[docs]</a><span class="k">class</span> <span class="nc">ValueDial</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="n">_dialProperties</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s1">&#39;minimum&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;maximum&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;value&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;singleStep&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;pageStep&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;notchesVisible&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;tracking&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;wrapping&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;invertedAppearance&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;invertedControls&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;orientation&#39;</span><span class="p">)</span>
+    <span class="n">_inPadding</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">_outPadding</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">valueChanged</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">pyqtSignal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># remove properties used as keyword arguments for the dial</span>
+        <span class="n">dialArgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dialProperties</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">dialArgs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dial</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">dialArgs</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valueChanged</span><span class="p">)</span>
+        <span class="c1"># make the dial the focus proxy (so that it captures focus *and* key events)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setFocusProxy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="p">)</span>
+
+        <span class="c1"># simple &quot;monkey patching&quot; to access dial functions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">setValue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minimum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">minimum</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maximum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">maximum</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wrapping</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">wrapping</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notchesVisible</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">notchesVisible</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setNotchesVisible</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">setNotchesVisible</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setNotchTarget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">setNotchTarget</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notchSize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">notchSize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">invertedAppearance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">invertedAppearance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setInvertedAppearance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">setInvertedAppearance</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSize</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ValueDial.center"><a class="viewcode-back" href="../dial.html#dial.ValueDial.center">[docs]</a>    <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maximum</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimum</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;center: &quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ValueDial.inPadding"><a class="viewcode-back" href="../dial.html#dial.ValueDial.inPadding">[docs]</a>    <span class="k">def</span> <span class="nf">inPadding</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inPadding</span></div>
+
+<div class="viewcode-block" id="ValueDial.setInPadding"><a class="viewcode-back" href="../dial.html#dial.ValueDial.setInPadding">[docs]</a>    <span class="k">def</span> <span class="nf">setInPadding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padding</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inPadding</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">padding</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ValueDial.outPadding"><a class="viewcode-back" href="../dial.html#dial.ValueDial.outPadding">[docs]</a>    <span class="k">def</span> <span class="nf">outPadding</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outPadding</span></div>
+
+<div class="viewcode-block" id="ValueDial.setOutPadding"><a class="viewcode-back" href="../dial.html#dial.ValueDial.setOutPadding">[docs]</a>    <span class="k">def</span> <span class="nf">setOutPadding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padding</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outPadding</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">padding</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSize</span><span class="p">()</span></div>
+
+    <span class="c1"># the following functions are required to correctly update the layout</span>
+<div class="viewcode-block" id="ValueDial.setMinimum"><a class="viewcode-back" href="../dial.html#dial.ValueDial.setMinimum">[docs]</a>    <span class="k">def</span> <span class="nf">setMinimum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minimum</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">setMinimum</span><span class="p">(</span><span class="n">minimum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ValueDial.setMaximum"><a class="viewcode-back" href="../dial.html#dial.ValueDial.setMaximum">[docs]</a>    <span class="k">def</span> <span class="nf">setMaximum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maximum</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">setMaximum</span><span class="p">(</span><span class="n">maximum</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ValueDial.setWrapping"><a class="viewcode-back" href="../dial.html#dial.ValueDial.setWrapping">[docs]</a>    <span class="k">def</span> <span class="nf">setWrapping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapping</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">setWrapping</span><span class="p">(</span><span class="n">wrapping</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ValueDial.updateSize"><a class="viewcode-back" href="../dial.html#dial.ValueDial.updateSize">[docs]</a>    <span class="k">def</span> <span class="nf">updateSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># a function that sets the margins to ensure that the value strings always</span>
+        <span class="c1"># have enough space</span>
+        <span class="n">fm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontMetrics</span><span class="p">()</span>
+        <span class="n">minWidth</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">fm</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minimum</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximum</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">minWidth</span><span class="p">,</span> <span class="n">fm</span><span class="o">.</span><span class="n">height</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">margin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inPadding</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outPadding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ValueDial.translateMouseEvent"><a class="viewcode-back" href="../dial.html#dial.ValueDial.translateMouseEvent">[docs]</a>    <span class="k">def</span> <span class="nf">translateMouseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="c1"># a helper function to translate mouse events to the dial</span>
+        <span class="k">return</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QMouseEvent</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">type</span><span class="p">(),</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">mapFrom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()),</span> 
+            <span class="n">event</span><span class="o">.</span><span class="n">button</span><span class="p">(),</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span><span class="p">(),</span> <span class="n">event</span><span class="o">.</span><span class="n">modifiers</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="ValueDial.changeEvent"><a class="viewcode-back" href="../dial.html#dial.ValueDial.changeEvent">[docs]</a>    <span class="k">def</span> <span class="nf">changeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QEvent</span><span class="o">.</span><span class="n">FontChange</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateSize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ValueDial.mousePressEvent"><a class="viewcode-back" href="../dial.html#dial.ValueDial.mousePressEvent">[docs]</a>    <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">translateMouseEvent</span><span class="p">(</span><span class="n">event</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ValueDial.mouseMoveEvent"><a class="viewcode-back" href="../dial.html#dial.ValueDial.mouseMoveEvent">[docs]</a>    <span class="k">def</span> <span class="nf">mouseMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">mouseMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">translateMouseEvent</span><span class="p">(</span><span class="n">event</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ValueDial.mouseReleaseEvent"><a class="viewcode-back" href="../dial.html#dial.ValueDial.mouseReleaseEvent">[docs]</a>    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dial</span><span class="o">.</span><span class="n">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">translateMouseEvent</span><span class="p">(</span><span class="n">event</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ValueDial.paintEvent"><a class="viewcode-back" href="../dial.html#dial.ValueDial.paintEvent">[docs]</a>    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">radius</span> <span class="o">-=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outPadding</span><span class="p">)</span>
+        <span class="n">invert</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">invertedAppearance</span><span class="p">()</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapping</span><span class="p">():</span>
+            <span class="n">angleRange</span> <span class="o">=</span> <span class="mi">360</span>
+            <span class="n">startAngle</span> <span class="o">=</span> <span class="mi">270</span>
+            <span class="n">rangeOffset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">angleRange</span> <span class="o">=</span> <span class="mi">300</span>
+            <span class="n">startAngle</span> <span class="o">=</span> <span class="mi">240</span> <span class="k">if</span> <span class="n">invert</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">300</span>
+            <span class="n">rangeOffset</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">fm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontMetrics</span><span class="p">()</span>
+
+        <span class="c1"># a reference line used for the target of the text rectangle</span>
+        <span class="n">reference</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QLineF</span><span class="o">.</span><span class="n">fromPolar</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">translated</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span><span class="o">.</span><span class="n">center</span><span class="p">())</span>
+        <span class="n">fullRange</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximum</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimum</span><span class="p">()</span>
+        <span class="n">textRect</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QRect</span><span class="p">()</span>
+
+        <span class="n">qp</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QPainter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">qp</span><span class="o">.</span><span class="n">setRenderHints</span><span class="p">(</span><span class="n">qp</span><span class="o">.</span><span class="n">Antialiasing</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fullRange</span> <span class="o">+</span> <span class="n">rangeOffset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">notchSize</span><span class="p">()):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimum</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span>
+            <span class="k">if</span> <span class="n">invert</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimum</span><span class="p">():</span>
+                    <span class="k">continue</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="n">fullRange</span> <span class="o">*</span> <span class="n">angleRange</span> <span class="o">*</span> <span class="n">invert</span>
+            <span class="n">reference</span><span class="o">.</span><span class="n">setAngle</span><span class="p">(</span><span class="n">startAngle</span> <span class="o">-</span> <span class="n">angle</span><span class="p">)</span>
+            <span class="n">textRect</span><span class="o">.</span><span class="n">setSize</span><span class="p">(</span><span class="n">fm</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">TextSingleLine</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+            <span class="n">textRect</span><span class="o">.</span><span class="n">moveCenter</span><span class="p">(</span><span class="n">reference</span><span class="o">.</span><span class="n">p2</span><span class="p">()</span><span class="o">.</span><span class="n">toPoint</span><span class="p">())</span>
+            <span class="n">qp</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">textRect</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">dial</span> <span class="o">=</span> <span class="n">ValueDial</span><span class="p">(</span><span class="n">minimum</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">dial</span><span class="o">.</span><span class="n">setNotchesVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">dial</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">knoblin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controller_factory.html">controller_factory module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dial.html">dial module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui.html">gui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knob.html">knob module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../servo.html">servo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../servo_controller.html">servo_controller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sweep.html">sweep module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test_servo_controller.html">test_servo_controller module</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
