@@ -330,7 +330,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     knoblinGUI = KnoblinGUI()
     # Add stylesheet
-    with open("css/dark.css","r") as fh:
+    with open("../css/dark.css","r") as fh:
         knoblinGUI.setStyleSheet(fh.read())
     # Show App
     knoblinGUI.show()

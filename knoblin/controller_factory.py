@@ -1,4 +1,4 @@
-# import serial   
+# import serial  
 # import time
 # from threading import Thread
 
@@ -59,7 +59,7 @@
 #         t1.start()
 #         t2.start()
 
-        
+       
 #         t1.join()  # interpreter will wait until your process get completed or terminated
 #         t2.join()
 #         label = queue.get()
@@ -71,7 +71,7 @@
 
 #     def make_controller(self):
 #         ports = list_ports.comports()
-        
+       
 #         # create serial object for arduino control
 #         for i, port in enumerate(ports):
 #             print(f"{i+1}) {port}")
@@ -79,7 +79,7 @@
 #         port_name = str(ports[port_ID])
 #         port_name = port_name[:port_name.index(' ')]
 #         print(port_name)
-#         arduino = serial.Serial(port_name, 9600)   
+#         arduino = serial.Serial(port_name, 9600)  
 
 #         # For testing let's actually offset the knobs to some
 #         # bad spot
@@ -93,10 +93,12 @@
 #         #     time.sleep(servo_delay_time)
 
 
-#         # setup knobs 
+#         # setup knobs
 #         num_knobs = self.ask_int("How many knobs are you sampling? ")
 #         # Put all knobs to center position
-#         _ = self.ask_yesno("Calibrating servos.  Please detach from servos from knobs as they will now return to center positon.  Please press enter when ready.")
+#         _ = self.ask_yesno("Calibrating servos.  Please detach from servos from knobs "\
+                             # "as they will now return to center positon.  Please press "\
+                             # "enter when ready.")
 #         # The first call is usually ignored, so a
 #         # redundant "dummy" call is done first.
 #         for _ in range(2):
