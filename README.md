@@ -4,7 +4,7 @@
 <img src="https://github.com/narad/knoblin/blob/main/images/knoblin.png" width=500>
 </p>
 
-The Knoblin is a library of code, instructions, and model specifications for MIDI control of the knobs on musical devices, especially those found on guitar amplifiers and effects pedals.  
+The Knoblin (KNOB controller and LINkages) is a library of code, instructions, and model specifications for MIDI control of the knobs on musical devices, especially those found on guitar amplifiers and effects pedals.  
 
 
 While originally developed as a way of performing large-scale data gathering from musical devices (for this [paper](https://github.com/narad/robo-knob/blob/main/readme.md#reference), there are probably lots of other fun uses for it!  Some ideas that spring to mind are preset changes on analog equipment, changing device parameters based on what is being played, changing them over the duration of the envelope of the notes being played, etc.)
