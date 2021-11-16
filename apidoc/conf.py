@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # knoblin documentation build configuration file, created by
-# sphinx-quickstart on Mon Nov 15 12:05:51 2021.
+# sphinx-quickstart on Tue Nov 16 22:58:17 2021.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -18,6 +18,7 @@
 #
 import os
 import sys
+sys.path.append('..')
 sys.path.insert(0, u'/Users/narad/Desktop/projects/knoblin/knoblin')
 
 
@@ -31,8 +32,9 @@ sys.path.insert(0, u'/Users/narad/Desktop/projects/knoblin/knoblin')
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.todo',
-    'sphinx.ext.viewcode']
+              'sphinx.ext.todo',
+              'sphinx.ext.viewcode',
+              'sphinx.ext.napoleon']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

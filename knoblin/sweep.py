@@ -10,7 +10,7 @@ class DeviceSettingsSweep:
         sweep_dict = dict()
         for param in self.control_dict:
 #             if param.parameter_type == "continuous":
-#                 sweep_dict[param.name] = list(range(param.min_value, param.max_value, discretize_interval))  
+#                 sweep_dict[param.name] = list(range(param.min_value, param.max_value, discretize_interval))
             if param.parameter_type == "discrete":
                 sweep_dict[param.name] = [v.midi for v in param.settings]
         return sweep_dict
@@ -35,11 +35,7 @@ class DeviceSettingsSweep:
             return settings
 
 
-        
-        
-        
-        
-        
+
 #   def default_sweep(self):
 #      {
 # #             'volume': [2],

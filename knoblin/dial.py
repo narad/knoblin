@@ -1,6 +1,6 @@
 # A class which wraps QDial in order
 # to paint number labels on ticks
-# primarily taken from answer here: 
+# primarily taken from answer here:
 # https://stackoverflow.com/questions/63698714/
 
 from PyQt5 import QtWidgets, QtCore, QtGui
@@ -8,16 +8,16 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 
 class ValueDial(QtWidgets.QWidget):
     _dialProperties = (
-        'minimum', 
-        'maximum', 
-        'value', 
-        'singleStep', 
+        'minimum',
+        'maximum',
+        'value',
+        'singleStep',
         'pageStep',
-        'notchesVisible', 
-        'tracking', 
-        'wrapping', 
-        'invertedAppearance', 
-        'invertedControls', 
+        'notchesVisible',
+        'tracking',
+        'wrapping',
+        'invertedAppearance',
+        'invertedControls',
         'orientation')
     _inPadding = 3
     _outPadding = 2
@@ -95,8 +95,8 @@ class ValueDial(QtWidgets.QWidget):
 
     def translateMouseEvent(self, event):
         # a helper function to translate mouse events to the dial
-        return QtGui.QMouseEvent(event.type(), 
-            self.dial.mapFrom(self, event.pos()), 
+        return QtGui.QMouseEvent(event.type(),
+            self.dial.mapFrom(self, event.pos()),
             event.button(), event.buttons(), event.modifiers())
 
     def changeEvent(self, event):

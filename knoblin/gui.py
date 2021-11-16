@@ -1,3 +1,16 @@
+"""GUI for Knoblin controller.
+
+This module provides one of the two main methods for interacting with the
+Knoblin controller outside of direct method calls (the other being the
+command line interface).  It provides basic support for saving and changing
+presets on the fly.
+
+If running for the first time with a particular device, run the GUI prior 
+to connecting knobs to servos so that they can be properly calibrated.
+
+"""
+
+
 from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import Qt, QThreadPool
@@ -9,18 +22,6 @@ from servo_controller import KnobServoController
 from time import sleep
 
 
-"""A one line summary of the module or program, terminated by a period.
-
-Leave one blank line.  The rest of this docstring should contain an
-overall description of the module or program.  Optionally, it may also
-contain a brief description of exported classes and functions and/or usage
-examples.
-
-  Typical usage example:
-
-  foo = ClassFoo()
-  bar = foo.FunctionBar()
-"""
 class KnoblinGUI(QWidget):
 
 
@@ -90,7 +91,7 @@ class KnoblinGUI(QWidget):
         layout.addWidget(preset_label, row, 0, 1, 1)
         # Dropdown select
         self.presets_box = QComboBox(self)
-        self.presets_box.currentIndexChanged.connect(lambda val: self.change_preset(val))
+        self.presets_box.currentIndexChanged.connect(self.change_preset)
         layout.addWidget(self.presets_box, row, 1, 1, 1)       
 
 
@@ -159,6 +160,15 @@ class KnoblinGUI(QWidget):
 
 
     def change_knob(self, i):
+        """
+        Changes the position of the dial with position i.  If changing to an
+        invalid position, changes the color of the dial to indicate it.
+        
+        Args:
+            i (int): the index of the dial to change
+        Returns:
+            bool: None
+        """
         print("=================================")
         print(i)
         self.dials[i].value()
@@ -172,14 +182,17 @@ class KnoblinGUI(QWidget):
             self.change_knob_color(self.dials[i], 'red')
 
 
-    # May implement this at some point: for when servo is 180
-    # and dial position is outside servo range
-    def is_valid_position(self, knob_index):
-        info = self.knob_infos[knob_index]
-
-
-    def change_knob_color(self, knob, color):
-        knob.setStyleSheet("QDial {\n"
+    def change_knob_color(self, dial: ValueDial, color: str) -> None:
+        """
+        Changes the stylesheet of the dial, changing its color.
+        
+        Args:
+            dial (ValueDial): the dial to change
+            color (str): the color to change it to
+        Returns:
+            bool: None
+        """
+        dial.setStyleSheet("QDial {\n"
                                 "\n"
                                 "background-color:" + color + ";\n"
                                 "\n"
@@ -187,7 +200,13 @@ class KnoblinGUI(QWidget):
                         )
 
 
-    def change_preset(self, i):
+    def change_preset(self):
+        """
+        Changes the preset to the currently selected element in self.presets_box.
+
+        Returns:
+            bool: None
+        """
         print("=================================")
         if len(self.presets) > 1:
             found_preset = self.presets[self.presets_box.currentText()]
@@ -204,11 +223,14 @@ class KnoblinGUI(QWidget):
 
 
     def calibrate_servos(self):
+        """
+        Moves all servos to their specified calibration points.
+        
+        Returns:
+            None
+        """
         print("=================================")
         self.controller.move_to_calibration()
-#         name2pos = { info['Knob Name']: 5 for info in self.knob_infos }
-# #        cmd_list = [(info['Knob Name'], 350) for info in self.knob_infos]
-#         self.controller.move_all(name2pos)
         for dial, info in zip(self.dials, self.knob_infos):
             dial.blockSignals(True)
             if info['Attachment'] == 'max':
@@ -220,11 +242,14 @@ class KnoblinGUI(QWidget):
             dial.blockSignals(False)
 
 
-        # self.controller.center_knobs()
-        # self.controller.center_knobs()
-
 
     def save_preset(self):
+        """
+        Saves the position of all knobs as a preset, adding it to the dropbox of selectable presets.
+        
+        Returns:
+            None
+        """
         if len(self.dials) > 0:
             name, ok = QInputDialog.getText(self, 'Add Preset', 'Name for Preset:')
             if ok:
