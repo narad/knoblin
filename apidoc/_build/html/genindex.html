@@ -38,10 +38,10 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
- | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
@@ -50,6 +50,7 @@
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  
 </div>
 <h2 id="A">A</h2>
@@ -61,13 +62,21 @@
 </li>
       <li><a href="knoblin.html#knoblin.servo_controller.KnobServoController.add_knob">add_knob() (knoblin.servo_controller.KnobServoController method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="knoblin.html#knoblin.gui.KnoblinGUI.add_main_buttons">add_main_buttons() (knoblin.gui.KnoblinGUI method)</a>
 </li>
       <li><a href="knoblin.html#knoblin.gui.KnoblinGUI.add_menu">add_menu() (knoblin.gui.KnoblinGUI method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="knoblin.html#knoblin.gui.KnoblinGUI.add_preset_row">add_preset_row() (knoblin.gui.KnoblinGUI method)</a>
+</li>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory.ask_int">ask_int() (knoblin.controller_factory.KnobControllerFactory method)</a>
+</li>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory.ask_str">ask_str() (knoblin.controller_factory.KnobControllerFactory method)</a>
+</li>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory.ask_str_queue">ask_str_queue() (knoblin.controller_factory.KnobControllerFactory method)</a>
+</li>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory.ask_yesno">ask_yesno() (knoblin.controller_factory.KnobControllerFactory method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -108,10 +117,6 @@
       <li><a href="knoblin.html#knoblin.servo.Servo270.degrees">degrees (knoblin.servo.Servo270 attribute)</a>
 </li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="knoblin.html#knoblin.sweep.DeviceSettingsSweep">DeviceSettingsSweep (class in knoblin.sweep)</a>
-</li>
-  </ul></td>
 </tr></table>
 
 <h2 id="E">E</h2>
@@ -122,20 +127,8 @@
   </ul></td>
 </tr></table>
 
-<h2 id="F">F</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="knoblin.html#knoblin.sweep.DeviceSettingsSweep.full_sweep">full_sweep() (knoblin.sweep.DeviceSettingsSweep method)</a>
-</li>
-  </ul></td>
-</tr></table>
-
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="knoblin.html#knoblin.sweep.DeviceSettingsSweep.get_settings">get_settings() (knoblin.sweep.DeviceSettingsSweep method)</a>
-</li>
-  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="knoblin.html#knoblin.gui.KnobDialog.getInputs">getInputs() (knoblin.gui.KnobDialog method)</a>
 </li>
@@ -164,6 +157,8 @@
       <li><a href="knoblin.html#knoblin.knob.Knob">Knob (class in knoblin.knob)</a>
 </li>
       <li><a href="knoblin.html#knoblin.knob.ActuatedKnob.knob2servo_degrees">knob2servo_degrees() (knoblin.knob.ActuatedKnob method)</a>
+</li>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory">KnobControllerFactory (class in knoblin.controller_factory)</a>
 </li>
       <li><a href="knoblin.html#knoblin.gui.KnobDialog">KnobDialog (class in knoblin.gui)</a>
 </li>
@@ -195,6 +190,8 @@
         <li><a href="knoblin.html#module-knoblin.gui">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     knoblin.knob
 
@@ -202,8 +199,6 @@
         <li><a href="knoblin.html#module-knoblin.knob">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     knoblin.servo
 
@@ -216,13 +211,6 @@
 
       <ul>
         <li><a href="knoblin.html#module-knoblin.servo_controller">module</a>
-</li>
-      </ul></li>
-      <li>
-    knoblin.sweep
-
-      <ul>
-        <li><a href="knoblin.html#module-knoblin.sweep">module</a>
 </li>
       </ul></li>
       <li>
@@ -241,9 +229,19 @@
   </ul></td>
 </tr></table>
 
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory.loop">loop() (knoblin.controller_factory.KnobControllerFactory method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory.make_controller">make_controller() (knoblin.controller_factory.KnobControllerFactory method)</a>
+</li>
       <li><a href="knoblin.html#knoblin.servo.Servo270.max_pos">max_pos (knoblin.servo.Servo270 attribute)</a>
 </li>
       <li><a href="knoblin.html#knoblin.servo.Servo270.mid_pos">mid_pos (knoblin.servo.Servo270 attribute)</a>
@@ -269,8 +267,6 @@
         <li><a href="knoblin.html#module-knoblin.servo">knoblin.servo</a>
 </li>
         <li><a href="knoblin.html#module-knoblin.servo_controller">knoblin.servo_controller</a>
-</li>
-        <li><a href="knoblin.html#module-knoblin.sweep">knoblin.sweep</a>
 </li>
         <li><a href="knoblin.html#module-knoblin.test_servo_controller">knoblin.test_servo_controller</a>
 </li>
@@ -363,11 +359,19 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="knoblin.html#knoblin.dial.ValueDial.valueChanged">valueChanged (knoblin.dial.ValueDial attribute)</a>
+      <li><a href="knoblin.html#knoblin.dial.ValueDial">ValueDial (class in knoblin.dial)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory.wiggle_ask">wiggle_ask() (knoblin.controller_factory.KnobControllerFactory method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="knoblin.html#knoblin.dial.ValueDial">ValueDial (class in knoblin.dial)</a>
+      <li><a href="knoblin.html#knoblin.controller_factory.KnobControllerFactory.wiggle_loop">wiggle_loop() (knoblin.controller_factory.KnobControllerFactory method)</a>
 </li>
   </ul></td>
 </tr></table>

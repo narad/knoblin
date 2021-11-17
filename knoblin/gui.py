@@ -190,7 +190,7 @@ class KnoblinGUI(QWidget):
             dial (ValueDial): the dial to change
             color (str): the color to change it to
         Returns:
-            bool: None
+            None
         """
         dial.setStyleSheet("QDial {\n"
                                 "\n"
@@ -205,7 +205,7 @@ class KnoblinGUI(QWidget):
         Changes the preset to the currently selected element in self.presets_box.
 
         Returns:
-            bool: None
+            None
         """
         print("=================================")
         if len(self.presets) > 1:

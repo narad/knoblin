@@ -1,4 +1,10 @@
 class Knob:
+    """
+    The Knob class represents a physical knob or potentiometer, with 
+    physical parameters, such as the degree of rotation possible.  It
+    can be combined with a Servo in an ActuatedKnob object to support
+    control.
+    """
 
     def __init__(self, name: str, degrees: int, min_position: int, max_position: int, last_position:int=None):
         self.name = name
@@ -17,6 +23,13 @@ class Knob:
 
 
 class ActuatedKnob:
+    """
+    An ActuatedKnob class supports control methods for a physical knob.
+    It handles annoying aspects of the physical coupling, like mismatches
+    between maximum rotation sweeps between the servo and knob, and 
+    computes appropriate servo position codes for specific knob settings
+    regardless of such mismatches.
+    """
 
     def __init__(self, knob, servo, attachment):
         self.knob = knob 
@@ -26,16 +39,17 @@ class ActuatedKnob:
 
 
 
-    def knob2servo_degrees(self, knob_degree):
-        # ratio between extent of servo and knob
+    def knob2servo_degrees(self, knob_degree: int) -> int:
+        """
+        Given the degree of the knob rotation, return the corresponding
+        degree of the attached servo.
+
+        Args:
+            knob_degrees (int): a knob position expressed in degrees.
+        Returns:
+            int: the degree of the servo
+        """
         degree_diff = self.knob.degrees - self.servo.degrees
-
-        # min attach
-        # servo degree = 270 (kn)
-        # servo degree = 10 (knob degree should be)
-
-#        servo_percent = (servo_degree / servo.rotation)
-
         if self.attachment == "max":
             return knob_degree - degree_diff
         elif self.attachment == "min":
@@ -44,16 +58,17 @@ class ActuatedKnob:
             return knob_degree - int(degree_diff / 2)
 
 
-    def servo2knob_degrees(self, servo_degree):
-        # ratio between extent of servo and knob
+    def servo2knob_degrees(self, servo_degree) -> int:
+        """
+        Given the degree of the servo rotation, return the corresponding
+        degree of the attached knob.
+
+        Args:
+            servo_degree (int): a servo position expressed in degrees.
+        Returns:
+            int: the degree of the knob
+        """
         degree_diff = self.knob.degrees - self.servo.degrees
-
-        # min attach
-        # servo degree = 270 (kn)
-        # servo degree = 10 (knob degree should be)
-
-#        servo_percent = (servo_degree / servo.rotation)
-
         if self.attachment == "max":
             return servo_degree + degree_diff
         elif self.attachment == "min":
@@ -64,23 +79,17 @@ class ActuatedKnob:
 
 
     def command_from_position(self, position):
-#        print(self.is_reachable_position(position))
+        """
+        Computes the command code, the str which will direct 
 
-        print(f"{self.knob.name}: -> {position}/{self.knob.max_position}")
-
-        print(self.knob.extent())
-
-        # # ratio between extent of servo and knob
-        # degree_diff = knob.rotation - servo.rotation
-        # assert degree_diff >= 0, "Servo rotation exceeds knob rotation, not currently supported"
-
-        # if self.attachment == "max":
-        #     print("max attachment")
-        # elif self.attachment == "min":
-        #     pass
-        # else: # centered
-        #     pass
-
+        Args:
+            position (int): the positon of the knob
+        Returns:
+            str: the appropriate command code to move the knob to
+                 the given position.
+        """
+        # print(f"{self.knob.name}: -> {position}/{self.knob.max_position}")
+        # print(self.knob.extent())
 
         # What percent of the knob rotation is it?
         knob_percent = (position-self.knob.min_position) / self.knob.extent()
@@ -97,13 +106,20 @@ class ActuatedKnob:
         # Get corresponding servo control command
         pos_code = self.servo.command_code_by_angle(servo_rotation)
 
-#        pos_code = self.servo.command_code(servo_rotation)
-#        pos_code = self.servo.command_code(percent_rotation)
         print("position code: ", pos_code)
         return pos_code
 
 
     def calibration_position(self):
+        """
+        Returns the calibration position of the knob.  For instance if
+        the knob is valued 0-10, and the attachment type is 'center',
+        it will return 5.
+
+        Returns:
+            str: the appropriate command code to move the knob to
+                 the given position.
+        """
         if self.attachment == "max":
             return self.knob.max_position
         elif self.attachment == "min":
@@ -113,67 +129,15 @@ class ActuatedKnob:
 
 
     def is_valid(self, position):
+        """
+        Tests if the knob position is valid.  Positions become invalid
+        when the servo is incapable of turning the knob to those
+        positions (because of range limitation mismatch).
+
+        Args:
+            position (int): the knob position.
+        Returns:
+            bool: whether the servo can turn the knob to the position.
+        """
         cmd = self.command_from_position(position)
         return cmd >= self.servo.min_pos and cmd <= self.servo.max_pos
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # def is_reachable_position(self):
-    #     # ratio between extent of servo and knob
-    #     degree_diff = knob.rotation - servo.rotation
-    #     if degree_diff <= 0:
-    #         return True
-
-
-    #     if self.attachment == "max":
-    #         print("max attachment")
-    #     elif self.attachment == "min":
-    #         pass
-    #     else: # centered
-    #         pass
-
-
-
-
-
-
-
-
-
-
-
-
-#     def move(self, position, delay=0):
-#         pos_code = self.command_from_position(position)
-
-#         # Encode and send command via Arduino
-
-
-# #        cmd = f"{self.servo.servo_id}:{pos_code}" #:{delay}" # old-style non-synchronous arduino code
-#         cmd = ""
-#         for i in range(10):
-#             if i == self.servo.servo_id:
-#                 cmd += f"{pos_code:03}"
-#             else:
-#                 cmd += "000"
-#         print(cmd)
-#         print()
-#         self.arduino.write(cmd.encode())
-
-
-#     def center(self):
-#         self.move(self.knob.mid_position())
-
-

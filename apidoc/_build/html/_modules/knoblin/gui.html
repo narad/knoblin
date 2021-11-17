@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>knoblin.gui &#8212; knoblin  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for knoblin.gui</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;GUI for Knoblin controller.</span>
+
+<span class="sd">This module provides one of the two main methods for interacting with the</span>
+<span class="sd">Knoblin controller outside of direct method calls (the other being the</span>
+<span class="sd">command line interface).  It provides basic support for saving and changing</span>
+<span class="sd">presets on the fly.</span>
+
+<span class="sd">If running for the first time with a particular device, run the GUI prior </span>
+<span class="sd">to connecting knobs to servos so that they can be properly calibrated.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">QtWidgets</span><span class="p">,</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QThreadPool</span>
+
+<span class="kn">from</span> <span class="nn">dial</span> <span class="kn">import</span> <span class="n">ValueDial</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">servo_controller</span> <span class="kn">import</span> <span class="n">KnobServoController</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+
+<div class="viewcode-block" id="KnoblinGUI"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI">[docs]</a><span class="k">class</span> <span class="nc">KnoblinGUI</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">QWidget</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Build the GUI</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QGridLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">layout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+        <span class="c1"># Add title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;Knoblin - Graphic Controller Interface v.1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setFixedHeight</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+
+        <span class="c1"># Add elements</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_menu</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_main_buttons</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_preset_row</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Set size hints for rows</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setRowStretch</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setRowStretch</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setRowStretch</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setRowStretch</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># and size hints for cols</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">layout</span><span class="o">.</span><span class="n">setColumnMinimumWidth</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+
+
+        <span class="c1"># Setup back-end</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">controller</span> <span class="o">=</span> <span class="n">KnobServoController</span><span class="p">()</span>
+
+        <span class="c1"># global vars</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob_row</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dials</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob_infos</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">presets</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="c1"># Pool for multi-threading the back-end processes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threadpool</span> <span class="o">=</span> <span class="n">QThreadPool</span><span class="p">()</span>
+
+
+
+<div class="viewcode-block" id="KnoblinGUI.add_main_buttons"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.add_main_buttons">[docs]</a>    <span class="k">def</span> <span class="nf">add_main_buttons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Add buttons to top row</span>
+        <span class="n">add_knob_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Add Knob&quot;</span><span class="p">)</span>
+        <span class="n">add_knob_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">add_dial</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">add_knob_button</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Button to center servos</span>
+        <span class="n">calibrate_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Calibrate Servos&quot;</span><span class="p">)</span>
+        <span class="n">calibrate_button</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s1">&#39;Move all servos to their attachment position.&#39;</span><span class="p">)</span>
+        <span class="n">calibrate_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">calibrate_servos</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">calibrate_button</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Button to save a preset</span>
+        <span class="n">preset_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Save Preset&quot;</span><span class="p">)</span>
+        <span class="n">preset_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">preset_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_preset</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">preset_button</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preset_button</span> <span class="o">=</span> <span class="n">preset_button</span></div>
+
+
+<div class="viewcode-block" id="KnoblinGUI.add_preset_row"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.add_preset_row">[docs]</a>    <span class="k">def</span> <span class="nf">add_preset_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">preset_label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Load Preset:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="n">preset_label</span><span class="o">.</span><span class="n">setAlignment</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignRight</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">preset_label</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Dropdown select</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">presets_box</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">presets_box</span><span class="o">.</span><span class="n">currentIndexChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_preset</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">presets_box</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       </div>
+
+
+<div class="viewcode-block" id="KnoblinGUI.add_menu"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.add_menu">[docs]</a>    <span class="k">def</span> <span class="nf">add_menu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># create menu</span>
+        <span class="n">menubar</span> <span class="o">=</span> <span class="n">QMenuBar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">menubar</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">actionFile</span> <span class="o">=</span> <span class="n">menubar</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s2">&quot;File&quot;</span><span class="p">)</span>
+        <span class="n">actionFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s2">&quot;New&quot;</span><span class="p">)</span>
+        <span class="n">actionFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s2">&quot;Open&quot;</span><span class="p">)</span>
+        <span class="n">actionFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s2">&quot;Save&quot;</span><span class="p">)</span>
+        <span class="n">actionFile</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+        <span class="n">actionFile</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s2">&quot;Quit&quot;</span><span class="p">)</span>
+        <span class="n">menubar</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s2">&quot;Edit&quot;</span><span class="p">)</span>
+        <span class="n">menubar</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s2">&quot;View&quot;</span><span class="p">)</span>
+        <span class="n">menubar</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s2">&quot;Help&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KnoblinGUI.add_dial"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.add_dial">[docs]</a>    <span class="k">def</span> <span class="nf">add_dial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">)</span>
+
+        <span class="n">dialog</span> <span class="o">=</span> <span class="n">KnobDialog</span><span class="p">(</span><span class="n">num_knobs</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">))</span>
+        <span class="n">dialog</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">styleSheet</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">dialog</span><span class="o">.</span><span class="n">exec</span><span class="p">():</span>
+            <span class="n">knob_name</span><span class="p">,</span> <span class="n">knob_type</span><span class="p">,</span> <span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">,</span> <span class="n">servo_type</span><span class="p">,</span> <span class="n">attachment</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">getInputs</span><span class="p">()</span>
+
+            <span class="n">d</span> <span class="o">=</span> <span class="n">ValueDial</span><span class="p">()</span> <span class="c1">#QDial()</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">setMinimum</span><span class="p">(</span><span class="n">min_val</span><span class="p">)</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">setMaximum</span><span class="p">(</span><span class="n">max_val</span><span class="p">)</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">setFixedWidth</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">max_val</span> <span class="o">-</span> <span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+
+            <span class="n">d</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span> <span class="n">val</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">change_knob</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob_row</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">setColumnMinimumWidth</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">),</span> <span class="mi">120</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">knob_infos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s1">&#39;Knob Name&#39;</span><span class="p">:</span> <span class="n">knob_name</span><span class="p">,</span>
+                <span class="s1">&#39;Knob Type&#39;</span><span class="p">:</span> <span class="n">knob_type</span><span class="p">,</span>
+                <span class="s1">&#39;Min Value&#39;</span><span class="p">:</span> <span class="n">min_val</span><span class="p">,</span> 
+                <span class="s1">&#39;Max Value&#39;</span><span class="p">:</span> <span class="n">max_val</span><span class="p">,</span>
+                <span class="s1">&#39;Servo&#39;</span><span class="p">:</span> <span class="n">servo_type</span><span class="p">,</span>
+                <span class="s1">&#39;Attachment&#39;</span><span class="p">:</span> <span class="n">attachment</span>
+                <span class="p">})</span>
+
+
+            <span class="n">l</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">knob_name</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="bp">self</span><span class="p">)</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">setFixedWidth</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">setAlignment</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignVCenter</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob_row</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Add the corresponding knob in the controller</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">add_knob</span><span class="p">(</span><span class="n">knob_name</span><span class="p">,</span>
+                                     <span class="n">knob_type</span><span class="p">,</span>
+                                     <span class="n">servo_id</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                                     <span class="n">min_position</span><span class="o">=</span><span class="n">min_val</span><span class="p">,</span>
+                                     <span class="n">max_position</span><span class="o">=</span><span class="n">max_val</span><span class="p">,</span>
+                                     <span class="n">attachment</span><span class="o">=</span><span class="n">attachment</span><span class="p">)</span>
+
+            <span class="c1"># Allow for presets to be saved</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">preset_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="KnoblinGUI.change_knob"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.change_knob">[docs]</a>    <span class="k">def</span> <span class="nf">change_knob</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Changes the position of the dial with position i.  If changing to an</span>
+<span class="sd">        invalid position, changes the color of the dial to indicate it.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            i (int): the index of the dial to change</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=================================&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob_infos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;Knob Name&#39;</span><span class="p">],</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dial </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> value = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;Knob Name&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">()):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">change_knob_color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">change_knob_color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KnoblinGUI.change_knob_color"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.change_knob_color">[docs]</a>    <span class="k">def</span> <span class="nf">change_knob_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dial</span><span class="p">:</span> <span class="n">ValueDial</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Changes the stylesheet of the dial, changing its color.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            dial (ValueDial): the dial to change</span>
+<span class="sd">            color (str): the color to change it to</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dial</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;QDial {</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                <span class="s2">&quot;background-color:&quot;</span> <span class="o">+</span> <span class="n">color</span> <span class="o">+</span> <span class="s2">&quot;;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                <span class="s2">&quot;}&quot;</span>
+                        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KnoblinGUI.change_preset"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.change_preset">[docs]</a>    <span class="k">def</span> <span class="nf">change_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Changes the preset to the currently selected element in self.presets_box.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=================================&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">presets</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">found_preset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">presets</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">presets_box</span><span class="o">.</span><span class="n">currentText</span><span class="p">()]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">found_preset</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">move_all</span><span class="p">(</span><span class="n">found_preset</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">knob_name</span><span class="p">,</span> <span class="n">knob_value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">presets</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">presets_box</span><span class="o">.</span><span class="n">currentText</span><span class="p">()]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># self.controller.move(knob_name, knob_value)</span>
+<span class="c1">#                sleep(2)</span>
+                <span class="c1"># Have to get the dial ID, not great indexes for this</span>
+                <span class="n">did</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob_infos</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Knob Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">knob_name</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">did</span><span class="p">]</span><span class="o">.</span><span class="n">blockSignals</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">did</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">knob_value</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">did</span><span class="p">]</span><span class="o">.</span><span class="n">blockSignals</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KnoblinGUI.calibrate_servos"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.calibrate_servos">[docs]</a>    <span class="k">def</span> <span class="nf">calibrate_servos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Moves all servos to their specified calibration points.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=================================&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">move_to_calibration</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">dial</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob_infos</span><span class="p">):</span>
+            <span class="n">dial</span><span class="o">.</span><span class="n">blockSignals</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;Attachment&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span>
+                <span class="n">dial</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;Max Value&#39;</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;Attachment&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span>
+                <span class="n">dial</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;Min Value&#39;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span> <span class="c1"># centered</span>
+                <span class="n">dial</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;Max Value&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;Min Value&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="n">dial</span><span class="o">.</span><span class="n">blockSignals</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="KnoblinGUI.save_preset"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnoblinGUI.save_preset">[docs]</a>    <span class="k">def</span> <span class="nf">save_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Saves the position of all knobs as a preset, adding it to the dropbox of selectable presets.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">ok</span> <span class="o">=</span> <span class="n">QInputDialog</span><span class="o">.</span><span class="n">getText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Add Preset&#39;</span><span class="p">,</span> <span class="s1">&#39;Name for Preset:&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ok</span><span class="p">:</span>
+                <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob_infos</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Knob Name&#39;</span><span class="p">]:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dials</span><span class="p">))</span> <span class="p">}</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">presets</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">presets_box</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span><span class="n">name</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">presets_box</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">presets</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span></div></div>
+
+
+
+
+
+<div class="viewcode-block" id="KnobDialog"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnobDialog">[docs]</a><span class="k">class</span> <span class="nc">KnobDialog</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_knobs</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        
+        <span class="c1"># Knob Name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob_name</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob_name</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Knob </span><span class="si">{</span><span class="n">num_knobs</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Minimum Knob Value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s1">&#39;The minimum value (lowest position) of the knob.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Maximum Knob Value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s1">&#39;The maximum value (highest position) of the knob.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Validators so only Int can be entered</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span><span class="o">.</span><span class="n">setValidator</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QIntValidator</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span><span class="o">.</span><span class="n">setValidator</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QIntValidator</span><span class="p">())</span>
+<span class="c1">#        self.safety_margin.setValidator(QtGui.QIntValidator(0,30))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob_type</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob_type</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s1">&#39;The type of servo being attached to this knob.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob_type</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span>
+            <span class="s2">&quot;270&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;280&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;290&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;300&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;310&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;320&quot;</span>
+        <span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob_type</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo_type</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo_type</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s1">&#39;The type of servo being attached to this knob.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo_type</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span>
+<span class="c1">#            &quot;180&quot;, </span>
+            <span class="s2">&quot;270&quot;</span>
+        <span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo_attach</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo_attach</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s1">&#39;Alignment point between knob and servo.  Both devices should be in this position during attachment.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo_attach</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;center&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span>
+        <span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo_attach</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">safety_margin</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">safety_margin</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s1">&#39;Degree of margin between the min/max position of the servo and what it is physically capable of (can prevent over-turning the knob when servo is beyond spec).&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">safety_margin</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span>
+            <span class="s2">&quot;0&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;10&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;15&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;20&quot;</span>
+        <span class="p">])</span>
+
+        <span class="n">buttonBox</span> <span class="o">=</span> <span class="n">QDialogButtonBox</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Ok</span> <span class="o">|</span> <span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Cancel</span><span class="p">,</span> <span class="bp">self</span><span class="p">);</span>
+
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QFormLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addRow</span><span class="p">(</span><span class="s2">&quot;Knob Name&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob_name</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addRow</span><span class="p">(</span><span class="s2">&quot;Minimum Value&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addRow</span><span class="p">(</span><span class="s2">&quot;Maximum Value&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_value</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addRow</span><span class="p">(</span><span class="s2">&quot;Knob Type&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob_type</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addRow</span><span class="p">(</span><span class="s2">&quot;Servo Type&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">servo_type</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addRow</span><span class="p">(</span><span class="s2">&quot;Servo Attachment&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">servo_attach</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addRow</span><span class="p">(</span><span class="s2">&quot;Safety Margin&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">safety_margin</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">buttonBox</span><span class="p">)</span>
+
+        <span class="n">buttonBox</span><span class="o">.</span><span class="n">accepted</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">)</span>
+        <span class="n">buttonBox</span><span class="o">.</span><span class="n">rejected</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reject</span><span class="p">)</span>
+
+<div class="viewcode-block" id="KnobDialog.getInputs"><a class="viewcode-back" href="../../knoblin.html#knoblin.gui.KnobDialog.getInputs">[docs]</a>    <span class="k">def</span> <span class="nf">getInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">knob_name</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span>
+                <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">knob_type</span><span class="o">.</span><span class="n">currentText</span><span class="p">()),</span>
+                <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_value</span><span class="o">.</span><span class="n">text</span><span class="p">()),</span>
+                <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_value</span><span class="o">.</span><span class="n">text</span><span class="p">()),</span>
+                <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">servo_type</span><span class="o">.</span><span class="n">currentText</span><span class="p">()),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">servo_attach</span><span class="o">.</span><span class="n">currentText</span><span class="p">())</span></div></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">knoblinGUI</span> <span class="o">=</span> <span class="n">KnoblinGUI</span><span class="p">()</span>
+    <span class="c1"># Add stylesheet</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../css/dark.css&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+        <span class="n">knoblinGUI</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="c1"># Show App</span>
+    <span class="n">knoblinGUI</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+
+
+
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">knoblin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../knoblin.html">knoblin package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

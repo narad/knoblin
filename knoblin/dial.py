@@ -7,24 +7,23 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 
 
 class ValueDial(QtWidgets.QWidget):
-    _dialProperties = (
-        'minimum',
-        'maximum',
-        'value',
-        'singleStep',
-        'pageStep',
-        'notchesVisible',
-        'tracking',
-        'wrapping',
-        'invertedAppearance',
-        'invertedControls',
-        'orientation')
-    _inPadding = 3
-    _outPadding = 2
-    valueChanged = QtCore.pyqtSignal(int)
 
 
     def __init__(self, *args, **kwargs):
+        self._dialProperties = (
+            'minimum',
+            'maximum',
+            'value',
+            'singleStep',
+            'pageStep',
+            'notchesVisible',
+            'tracking',
+            'wrapping',
+            'invertedAppearance',
+            'invertedControls',
+            'orientation'
+        )
+
         # remove properties used as keyword arguments for the dial
         dialArgs = {k:v for k, v in kwargs.items() if k in self._dialProperties}
         for k in dialArgs.keys():
@@ -50,39 +49,56 @@ class ValueDial(QtWidgets.QWidget):
         self.invertedAppearance = self.dial.invertedAppearance
         self.setInvertedAppearance = self.dial.setInvertedAppearance
 
+        self._inPadding = 3
+        self._outPadding = 2
+
+        self.valueChanged = QtCore.pyqtSignal(int)
+
         self.updateSize()
+        super(ValueDial, self).__init__()
+
+
+
 
     def center(self):
         c = (self.maximum() - self.minimum()) / 2
         print("center: ", c)
         self.setValue(c)
 
+
     def inPadding(self):
         return self._inPadding
+
 
     def setInPadding(self, padding):
         self._inPadding = max(0, padding)
         self.updateSize()
 
+
     def outPadding(self):
         return self._outPadding
+
 
     def setOutPadding(self, padding):
         self._outPadding = max(0, padding)
         self.updateSize()
+
 
     # the following functions are required to correctly update the layout
     def setMinimum(self, minimum):
         self.dial.setMinimum(minimum)
         self.updateSize()
 
+
     def setMaximum(self, maximum):
         self.dial.setMaximum(maximum)
         self.updateSize()
 
+
     def setWrapping(self, wrapping):
         self.dial.setWrapping(wrapping)
         self.updateSize()
+
 
     def updateSize(self):
         # a function that sets the margins to ensure that the value strings always
@@ -93,24 +109,32 @@ class ValueDial(QtWidgets.QWidget):
         margin = self.offset + self._inPadding + self._outPadding
         self.layout().setContentsMargins(margin, margin, margin, margin)
 
+
     def translateMouseEvent(self, event):
         # a helper function to translate mouse events to the dial
         return QtGui.QMouseEvent(event.type(),
-            self.dial.mapFrom(self, event.pos()),
-            event.button(), event.buttons(), event.modifiers())
+                                 self.dial.mapFrom(self, event.pos()),
+                                 event.button(),
+                                 event.buttons(),
+                                 event.modifiers())
+
 
     def changeEvent(self, event):
         if event.type() == QtCore.QEvent.FontChange:
             self.updateSize()
 
+
     def mousePressEvent(self, event):
         self.dial.mousePressEvent(self.translateMouseEvent(event))
+
 
     def mouseMoveEvent(self, event):
         self.dial.mouseMoveEvent(self.translateMouseEvent(event))
 
+
     def mouseReleaseEvent(self, event):
         self.dial.mouseReleaseEvent(self.translateMouseEvent(event))
+
 
     def paintEvent(self, event):
         radius = min(self.width(), self.height()) / 2

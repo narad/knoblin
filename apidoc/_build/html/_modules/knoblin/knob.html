@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>knoblin.knob &#8212; knoblin  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for knoblin.knob</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="Knob"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.Knob">[docs]</a><span></span><span class="k">class</span> <span class="nc">Knob</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Knob class represents a physical knob or potentiometer, with </span>
+<span class="sd">    physical parameters, such as the degree of rotation possible.  It</span>
+<span class="sd">    can be combined with a Servo in an ActuatedKnob object to support</span>
+<span class="sd">    control.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">degrees</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">min_position</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_position</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">last_position</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_position</span> <span class="o">=</span> <span class="n">min_position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_position</span> <span class="o">=</span> <span class="n">max_position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_position</span> <span class="o">=</span> <span class="n">last_position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_position</span> <span class="o">=</span> <span class="n">min_position</span> <span class="o">+</span> <span class="p">((</span><span class="n">max_position</span><span class="o">-</span> <span class="n">min_position</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">degrees</span> <span class="o">=</span> <span class="n">degrees</span>
+
+<div class="viewcode-block" id="Knob.extent"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.Knob.extent">[docs]</a>    <span class="k">def</span> <span class="nf">extent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_position</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_position</span></div>
+
+<div class="viewcode-block" id="Knob.mid_position"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.Knob.mid_position">[docs]</a>    <span class="k">def</span> <span class="nf">mid_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_position</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extent</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></div></div>
+
+
+
+<div class="viewcode-block" id="ActuatedKnob"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.ActuatedKnob">[docs]</a><span class="k">class</span> <span class="nc">ActuatedKnob</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An ActuatedKnob class supports control methods for a physical knob.</span>
+<span class="sd">    It handles annoying aspects of the physical coupling, like mismatches</span>
+<span class="sd">    between maximum rotation sweeps between the servo and knob, and </span>
+<span class="sd">    computes appropriate servo position codes for specific knob settings</span>
+<span class="sd">    regardless of such mismatches.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knob</span><span class="p">,</span> <span class="n">servo</span><span class="p">,</span> <span class="n">attachment</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knob</span> <span class="o">=</span> <span class="n">knob</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">servo</span> <span class="o">=</span> <span class="n">servo</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">attachment</span> <span class="o">=</span> <span class="n">attachment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">knob</span><span class="o">.</span><span class="n">name</span>
+
+
+
+<div class="viewcode-block" id="ActuatedKnob.knob2servo_degrees"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.ActuatedKnob.knob2servo_degrees">[docs]</a>    <span class="k">def</span> <span class="nf">knob2servo_degrees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knob_degree</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Given the degree of the knob rotation, return the corresponding</span>
+<span class="sd">        degree of the attached servo.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            knob_degrees (int): a knob position expressed in degrees.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            int: the degree of the servo</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">degree_diff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob</span><span class="o">.</span><span class="n">degrees</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">servo</span><span class="o">.</span><span class="n">degrees</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attachment</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">knob_degree</span> <span class="o">-</span> <span class="n">degree_diff</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">attachment</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">knob_degree</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># centered</span>
+            <span class="k">return</span> <span class="n">knob_degree</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">degree_diff</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ActuatedKnob.servo2knob_degrees"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.ActuatedKnob.servo2knob_degrees">[docs]</a>    <span class="k">def</span> <span class="nf">servo2knob_degrees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">servo_degree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Given the degree of the servo rotation, return the corresponding</span>
+<span class="sd">        degree of the attached knob.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            servo_degree (int): a servo position expressed in degrees.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            int: the degree of the knob</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">degree_diff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob</span><span class="o">.</span><span class="n">degrees</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">servo</span><span class="o">.</span><span class="n">degrees</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attachment</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">servo_degree</span> <span class="o">+</span> <span class="n">degree_diff</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">attachment</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">servo_degree</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># centered</span>
+            <span class="k">return</span> <span class="n">servo_degree</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">degree_diff</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ActuatedKnob.command_from_position"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.ActuatedKnob.command_from_position">[docs]</a>    <span class="k">def</span> <span class="nf">command_from_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the command code, the str which will direct </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            position (int): the positon of the knob</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: the appropriate command code to move the knob to</span>
+<span class="sd">                 the given position.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># print(f&quot;{self.knob.name}: -&gt; {position}/{self.knob.max_position}&quot;)</span>
+        <span class="c1"># print(self.knob.extent())</span>
+
+        <span class="c1"># What percent of the knob rotation is it?</span>
+        <span class="n">knob_percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">position</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">knob</span><span class="o">.</span><span class="n">min_position</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob</span><span class="o">.</span><span class="n">extent</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;knob percent: &quot;</span><span class="p">,</span> <span class="n">knob_percent</span><span class="p">)</span>
+
+        <span class="c1"># How many degrees does that relate to in the knob</span>
+        <span class="n">knob_rotation</span> <span class="o">=</span> <span class="n">knob_percent</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob</span><span class="o">.</span><span class="n">degrees</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;knob rotation: &quot;</span><span class="p">,</span> <span class="n">knob_rotation</span><span class="p">)</span>
+
+        <span class="c1"># What percent of the servo rotation corresponds to that knob rotation?</span>
+        <span class="n">servo_rotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob2servo_degrees</span><span class="p">(</span><span class="n">knob_rotation</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;servo rotation: &quot;</span><span class="p">,</span> <span class="n">servo_rotation</span><span class="p">)</span>
+
+        <span class="c1"># Get corresponding servo control command</span>
+        <span class="n">pos_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">servo</span><span class="o">.</span><span class="n">command_code_by_angle</span><span class="p">(</span><span class="n">servo_rotation</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;position code: &quot;</span><span class="p">,</span> <span class="n">pos_code</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pos_code</span></div>
+
+
+<div class="viewcode-block" id="ActuatedKnob.calibration_position"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.ActuatedKnob.calibration_position">[docs]</a>    <span class="k">def</span> <span class="nf">calibration_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the calibration position of the knob.  For instance if</span>
+<span class="sd">        the knob is valued 0-10, and the attachment type is &#39;center&#39;,</span>
+<span class="sd">        it will return 5.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: the appropriate command code to move the knob to</span>
+<span class="sd">                 the given position.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attachment</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob</span><span class="o">.</span><span class="n">max_position</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">attachment</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob</span><span class="o">.</span><span class="n">min_position</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># centered</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">knob</span><span class="o">.</span><span class="n">center_position</span></div>
+
+
+<div class="viewcode-block" id="ActuatedKnob.is_valid"><a class="viewcode-back" href="../../knoblin.html#knoblin.knob.ActuatedKnob.is_valid">[docs]</a>    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests if the knob position is valid.  Positions become invalid</span>
+<span class="sd">        when the servo is incapable of turning the knob to those</span>
+<span class="sd">        positions (because of range limitation mismatch).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            position (int): the knob position.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: whether the servo can turn the knob to the position.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_from_position</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cmd</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">servo</span><span class="o">.</span><span class="n">min_pos</span> <span class="ow">and</span> <span class="n">cmd</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">servo</span><span class="o">.</span><span class="n">max_pos</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">knoblin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../knoblin.html">knoblin package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

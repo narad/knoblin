@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>knoblin.controller_factory &#8212; knoblin  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for knoblin.controller_factory</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">serial</span> 
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+
+<span class="kn">from</span> <span class="nn">serial.tools</span> <span class="kn">import</span> <span class="n">list_ports</span>
+
+
+<span class="n">min_pos</span> <span class="o">=</span> <span class="mi">125</span>
+<span class="n">max_pos</span> <span class="o">=</span> <span class="mi">575</span>
+<span class="n">mid_pos</span> <span class="o">=</span> <span class="mi">350</span>
+
+<span class="n">thread_running</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">servo_delay_time</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<div class="viewcode-block" id="KnobControllerFactory"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory">[docs]</a><span class="k">class</span> <span class="nc">KnobControllerFactory</span><span class="p">:</span>
+
+<div class="viewcode-block" id="KnobControllerFactory.ask_yesno"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory.ask_yesno">[docs]</a>    <span class="k">def</span> <span class="nf">ask_yesno</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">question</span><span class="o">+</span><span class="s1">&#39; (y/n): &#39;</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span></div>
+
+<div class="viewcode-block" id="KnobControllerFactory.ask_int"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory.ask_int">[docs]</a>    <span class="k">def</span> <span class="nf">ask_int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">question</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="KnobControllerFactory.ask_str"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory.ask_str">[docs]</a>    <span class="k">def</span> <span class="nf">ask_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">input</span><span class="p">(</span><span class="n">question</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="KnobControllerFactory.ask_str_queue"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory.ask_str_queue">[docs]</a>    <span class="k">def</span> <span class="nf">ask_str_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">queue</span><span class="p">):</span>
+<span class="c1">#        print(&quot;asking str&quot;)</span>
+<span class="c1">#        i = input(question)</span>
+<span class="c1">#        print(i)</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">question</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="KnobControllerFactory.wiggle_loop"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory.wiggle_loop">[docs]</a>    <span class="k">def</span> <span class="nf">wiggle_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arduino</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">thread_running</span>
+
+    <span class="c1">#    start_time = time.time()</span>
+
+        <span class="c1"># run this while there is no input</span>
+        <span class="n">pole</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">servo</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">thread_running</span><span class="p">:</span>
+            <span class="n">pole</span> <span class="o">=</span> <span class="n">pole</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span>
+<span class="c1">#            time.sleep(0.1)</span>
+            <span class="n">arduino</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">servo</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">mid_pos</span> <span class="o">+</span> <span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="n">pole</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+
+            <span class="c1"># if time.time() - start_time &gt;= 5:</span>
+            <span class="c1">#     start_time = time.time()</span>
+            <span class="c1">#     print(&#39;Another 5 seconds has passed&#39;)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">servo_delay_time</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KnobControllerFactory.wiggle_ask"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory.wiggle_ask">[docs]</a>    <span class="k">def</span> <span class="nf">wiggle_ask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">arduino</span><span class="p">):</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ask_str_queue</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">queue</span><span class="p">))</span>
+<span class="c1">#        t2 = Thread(target=self.ask_str(question)).start()</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wiggle_loop</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">arduino</span><span class="p">,))</span>
+
+        <span class="n">t1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">t2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+      
+        <span class="n">t1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>  <span class="c1"># interpreter will wait until your process get completed or terminated</span>
+        <span class="n">t2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;label: &quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+        <span class="c1"># thread_running = False</span>
+        <span class="c1"># print(t2)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The end&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KnobControllerFactory.make_controller"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory.make_controller">[docs]</a>    <span class="k">def</span> <span class="nf">make_controller</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ports</span> <span class="o">=</span> <span class="n">list_ports</span><span class="o">.</span><span class="n">comports</span><span class="p">()</span>
+      
+        <span class="c1"># create serial object for arduino control</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">port</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ports</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">) </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">port_ID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ask_int</span><span class="p">(</span><span class="s2">&quot;Which port is the Arduino port? &quot;</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">port_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ports</span><span class="p">[</span><span class="n">port_ID</span><span class="p">])</span>
+        <span class="n">port_name</span> <span class="o">=</span> <span class="n">port_name</span><span class="p">[:</span><span class="n">port_name</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">port_name</span><span class="p">)</span>
+        <span class="n">arduino</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">port_name</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span> 
+
+        <span class="c1"># For testing let&#39;s actually offset the knobs to some</span>
+        <span class="c1"># bad spot</span>
+        <span class="c1"># print(&quot;SEtting up servos to bad spot&quot;)</span>
+        <span class="c1"># for i in range(2):</span>
+        <span class="c1">#     arduino.write(f&quot;{i}:{500}&quot;.encode())</span>
+        <span class="c1">#     time.sleep(servo_delay_time)</span>
+
+        <span class="c1"># for i in range(2):</span>
+        <span class="c1">#     arduino.write(f&quot;{i}:{500}&quot;.encode())</span>
+        <span class="c1">#     time.sleep(servo_delay_time)</span>
+
+
+        <span class="c1"># setup knobs</span>
+        <span class="n">num_knobs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ask_int</span><span class="p">(</span><span class="s2">&quot;How many knobs are you sampling? &quot;</span><span class="p">)</span>
+        <span class="c1"># Put all knobs to center position</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ask_yesno</span><span class="p">(</span><span class="s2">&quot;Calibrating servos.  Please detach from servos from knobs &quot;</span>\
+                             <span class="s2">&quot;as they will now return to center positon.  Please press &quot;</span>\
+                             <span class="s2">&quot;enter when ready.&quot;</span><span class="p">)</span>
+        <span class="c1"># The first call is usually ignored, so a</span>
+        <span class="c1"># redundant &quot;dummy&quot; call is done first.</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_knobs</span><span class="p">):</span>
+                <span class="n">arduino</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">mid_pos</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">servo_delay_time</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished.  You may now attach servos to the device.&quot;</span><span class="p">)</span>
+
+
+        <span class="c1"># Label all knobs</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">servo_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_knobs</span><span class="p">):</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ask_str</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;What is the knob label for servo </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">? &quot;</span><span class="p">)</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">servo_map</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="c1"># = self.wiggle_ask(&quot;What do you caaaaall this servo? &quot;, arduino)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Labels:&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  servo </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> --&gt; </span><span class="si">{</span><span class="n">l</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+
+
+        <span class="c1"># servo_map = dict()</span>
+        <span class="c1"># for i in range(num_knobs):</span>
+        <span class="c1">#     print(i)</span>
+
+        <span class="k">return</span> <span class="n">KnobServoController</span><span class="p">(</span><span class="n">arduino</span><span class="p">,</span> <span class="n">servo_map</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="KnobControllerFactory.loop"><a class="viewcode-back" href="../../knoblin.html#knoblin.controller_factory.KnobControllerFactory.loop">[docs]</a>    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">350</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">570</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">move_servo</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">servo_delay_time</span><span class="p">)</span></div></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">knoblin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../knoblin.html">knoblin package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

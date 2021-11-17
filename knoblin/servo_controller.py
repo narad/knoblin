@@ -1,3 +1,11 @@
+"""
+The central servo controller module.
+
+This module instantiates a connection with an Arduino unit, serves as
+a interface for creating virtual knobs, and sends messages to update
+the physical knob positions.
+"""
+
 import serial   
 from util.connect_arduino import get_port_name
 from knob import Knob, ActuatedKnob
@@ -7,18 +15,6 @@ from time import sleep
 from typing import Dict, List
 
 
-"""A one line summary of the module or program, terminated by a period.
-
-Leave one blank line.  The rest of this docstring should contain an
-overall description of the module or program.  Optionally, it may also
-contain a brief description of exported classes and functions and/or usage
-examples.
-
-  Typical usage example:
-
-  foo = ClassFoo()
-  bar = foo.FunctionBar()
-"""
 class KnobServoController:
 
     def __init__(self, knobs: List[ActuatedKnob]=[], port_name: str=None) -> None:
@@ -35,15 +31,32 @@ class KnobServoController:
 
 
     def knobs(self):
-        print("num knobs = ", self.num_knobs)
+        """
+        Changes the preset to the currently selected element in self.presets_box.
+
+        Returns:
+            list[ActuatedKnob]: a list of current knobs
+        """
         return [self.id2knob[i] for i in range(self.num_knobs())]
 
 
     def num_knobs(self):
+        """
+        Returns the number of knobs currently known by the controller.
+
+        Returns:
+            int: the number of knobs
+        """
         return len(self.id2knob)
 
 
     def add_knob(self, knob_name: str, knob_type: int, servo_id: int, min_position: int, max_position: int, attachment: str) -> None:
+        """
+        Create a new ActuatedKnob and add it to the controller
+
+        Returns:
+            None
+        """
         knob = Knob(knob_name,
                     knob_type,
                     min_position,
@@ -58,8 +71,6 @@ class KnobServoController:
 
     def move(self, knob_name: str, position: int, delay:int=0) -> None:
         self.move_all({knob_name: position})
-        # knob = self.name2knob[knob_name]
-        # knob.move(position)
 
 
     def move_all(self, name2pos: Dict[str,int], delay:int=0) -> None:
