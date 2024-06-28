@@ -10,17 +10,17 @@ class Servo270:
 		self.servo_id = servo_id
 
 	def command_code(self, percent_rotation: float) -> int:
-		ratio = (self.max_pos - self.min_pos) #/ 360
+		ratio = (self.max_pos - self.min_pos)
 		new_pos = (percent_rotation * ratio) + self.min_pos
 		return int(new_pos)
 
 	def command_code_by_percent(self, percent_rotation: float) -> int:
-		ratio = (self.max_pos - self.min_pos) #/ 360
+		ratio = (self.max_pos - self.min_pos)
 		new_pos = (percent_rotation * ratio) + self.min_pos
 		return int(new_pos)
 
 	def command_code_by_angle(self, angle: float) -> int:
 		percent_rotation = angle / self.degrees
-		ratio = (self.max_pos - self.min_pos) #/ 360
+		ratio = (self.max_pos - self.min_pos)
 		new_pos = (percent_rotation * ratio) + self.min_pos
 		return int(new_pos)

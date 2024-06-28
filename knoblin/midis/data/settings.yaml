@@ -1,0 +1,6001 @@
+files:
+  - filename: 00000000.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000001.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000002.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000003.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000004.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000005.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.4
+  - filename: 00000006.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000007.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000008.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000009.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 0.7
+    - "Treble": 0.2
+  - filename: 00000010.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.5
+    - "Treble": 0.1
+  - filename: 00000011.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000012.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000013.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000014.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000015.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 1.0
+  - filename: 00000016.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000017.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000018.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.9
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000019.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000020.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000021.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.4
+  - filename: 00000022.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000023.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.1
+  - filename: 00000024.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000025.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 0.5
+  - filename: 00000026.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000027.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000028.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.5
+    - "Treble": 0.1
+  - filename: 00000029.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000030.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 1.0
+  - filename: 00000031.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000032.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000033.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000034.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000035.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000036.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.4
+  - filename: 00000037.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000038.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000039.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.3
+  - filename: 00000040.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000041.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000042.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000043.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000044.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.3
+  - filename: 00000045.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000046.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.2
+  - filename: 00000047.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000048.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000049.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000050.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.9
+  - filename: 00000051.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000052.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000053.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000054.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000055.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000056.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000057.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000058.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000059.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000060.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000061.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.2
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000062.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.7
+    - "Treble": 0.1
+  - filename: 00000063.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000064.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000065.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.5
+  - filename: 00000066.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.4
+  - filename: 00000067.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000068.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.3
+  - filename: 00000069.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000070.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.9
+  - filename: 00000071.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000072.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 0.5
+    - "Treble": 0.3
+  - filename: 00000073.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.4
+    - "Mid": 0.1
+    - "Treble": 0.2
+  - filename: 00000074.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.2
+  - filename: 00000075.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000076.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000077.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000078.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000079.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000080.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000081.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 0.9
+  - filename: 00000082.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000083.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.7
+    - "Treble": 0.8
+  - filename: 00000084.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000085.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000086.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000087.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000088.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000089.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000090.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000091.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 0.1
+  - filename: 00000092.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000093.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.8
+  - filename: 00000094.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000095.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000096.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.1
+  - filename: 00000097.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000098.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000099.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000100.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.4
+  - filename: 00000101.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 1.0
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000102.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000103.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000104.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.3
+  - filename: 00000105.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.8
+    - "Treble": 0.7
+  - filename: 00000106.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.3
+    - "Treble": 0.3
+  - filename: 00000107.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000108.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000109.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000110.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000111.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000112.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000113.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000114.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000115.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 0.1
+  - filename: 00000116.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000117.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.2
+  - filename: 00000118.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000119.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000120.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000121.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.5
+  - filename: 00000122.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000123.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000124.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000125.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.5
+  - filename: 00000126.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.3
+  - filename: 00000127.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 1.0
+  - filename: 00000128.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000129.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000130.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000131.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.7
+  - filename: 00000132.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000133.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000134.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000135.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000136.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000137.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000138.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000139.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.4
+  - filename: 00000140.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000141.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000142.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000143.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000144.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000145.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.5
+  - filename: 00000146.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.3
+  - filename: 00000147.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000148.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000149.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000150.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000151.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000152.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000153.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000154.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 1.0
+  - filename: 00000155.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000156.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000157.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000158.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000159.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.8
+  - filename: 00000160.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000161.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000162.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000163.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000164.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000165.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000166.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000167.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000168.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000169.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000170.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000171.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000172.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.9
+  - filename: 00000173.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000174.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.4
+  - filename: 00000175.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000176.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000177.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000178.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000179.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000180.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000181.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000182.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.7
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000183.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000184.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000185.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000186.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000187.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000188.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000189.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000190.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000191.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.3
+  - filename: 00000192.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000193.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000194.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000195.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000196.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000197.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000198.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000199.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000200.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000201.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000202.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000203.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000204.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000205.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000206.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000207.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000208.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000209.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000210.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000211.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000212.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000213.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000214.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000215.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000216.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.4
+  - filename: 00000217.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000218.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000219.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000220.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000221.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000222.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.9
+  - filename: 00000223.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000224.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.2
+  - filename: 00000225.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000226.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000227.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.5
+  - filename: 00000228.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000229.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.2
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000230.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000231.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000232.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000233.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000234.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.2
+  - filename: 00000235.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.2
+  - filename: 00000236.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000237.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000238.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000239.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000240.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000241.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000242.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000243.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000244.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000245.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.8
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000246.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000247.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000248.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000249.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000250.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000251.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000252.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000253.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000254.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000255.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000256.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000257.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000258.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000259.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.5
+  - filename: 00000260.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.3
+  - filename: 00000261.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000262.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 0.3
+  - filename: 00000263.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000264.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000265.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000266.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000267.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000268.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000269.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000270.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000271.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000272.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000273.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000274.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000275.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000276.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000277.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.4
+  - filename: 00000278.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000279.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000280.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.7
+  - filename: 00000281.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000282.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.9
+    - "Treble": 0.1
+  - filename: 00000283.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000284.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.7
+  - filename: 00000285.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000286.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000287.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 0.1
+  - filename: 00000288.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000289.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000290.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000291.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000292.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.5
+    - "Treble": 0.2
+  - filename: 00000293.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.5
+  - filename: 00000294.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000295.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000296.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000297.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.2
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000298.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000299.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000300.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000301.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000302.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000303.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000304.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000305.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000306.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000307.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000308.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000309.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000310.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000311.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000312.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000313.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000314.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.3
+  - filename: 00000315.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000316.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000317.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000318.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000319.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000320.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000321.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.1
+  - filename: 00000322.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000323.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000324.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000325.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000326.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000327.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.1
+  - filename: 00000328.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000329.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000330.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000331.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000332.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000333.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000334.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.2
+  - filename: 00000335.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000336.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000337.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000338.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000339.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.9
+    - "Treble": 0.1
+  - filename: 00000340.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000341.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000342.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000343.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000344.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 1.0
+  - filename: 00000345.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000346.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000347.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000348.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.8
+  - filename: 00000349.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000350.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000351.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000352.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000353.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000354.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000355.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000356.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000357.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000358.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000359.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.1
+  - filename: 00000360.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000361.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000362.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000363.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000364.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000365.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000366.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000367.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000368.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000369.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000370.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000371.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000372.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000373.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000374.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000375.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000376.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000377.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000378.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000379.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000380.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000381.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000382.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000383.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000384.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 1.0
+    - "Mid": 0.5
+    - "Treble": 0.4
+  - filename: 00000385.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000386.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000387.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.7
+    - "Treble": 0.2
+  - filename: 00000388.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000389.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000390.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000391.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000392.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000393.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000394.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000395.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 0.1
+  - filename: 00000396.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000397.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000398.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000399.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000400.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.8
+  - filename: 00000401.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.4
+  - filename: 00000402.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000403.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.5
+  - filename: 00000404.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.1
+  - filename: 00000405.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000406.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.2
+  - filename: 00000407.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000408.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.9
+    - "Treble": 0.1
+  - filename: 00000409.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 0.8
+  - filename: 00000410.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000411.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000412.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 0.8
+  - filename: 00000413.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000414.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000415.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000416.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000417.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000418.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000419.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000420.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000421.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000422.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000423.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000424.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000425.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000426.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000427.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000428.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.3
+  - filename: 00000429.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000430.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000431.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000432.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000433.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000434.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000435.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000436.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000437.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000438.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000439.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.4
+  - filename: 00000440.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000441.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000442.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000443.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.5
+    - "Treble": 0.1
+  - filename: 00000444.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000445.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000446.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.1
+    - "Treble": 0.4
+  - filename: 00000447.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000448.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 0.7
+  - filename: 00000449.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000450.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000451.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.4
+  - filename: 00000452.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 0.2
+  - filename: 00000453.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.5
+  - filename: 00000454.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000455.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.1
+  - filename: 00000456.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000457.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000458.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000459.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000460.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000461.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000462.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 0.5
+    - "Treble": 0.1
+  - filename: 00000463.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000464.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.7
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000465.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000466.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000467.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000468.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000469.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000470.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 0.2
+  - filename: 00000471.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000472.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000473.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000474.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000475.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000476.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000477.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.8
+  - filename: 00000478.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000479.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000480.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000481.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000482.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000483.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000484.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000485.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000486.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000487.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000488.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000489.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000490.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000491.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000492.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000493.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000494.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000495.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000496.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000497.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 0.2
+  - filename: 00000498.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000499.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000500.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000501.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000502.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000503.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000504.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000505.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 1.0
+  - filename: 00000506.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000507.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000508.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000509.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000510.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000511.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000512.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000513.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000514.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000515.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.5
+  - filename: 00000516.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.9
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000517.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000518.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000519.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000520.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000521.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000522.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.1
+  - filename: 00000523.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000524.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.3
+  - filename: 00000525.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.6
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000526.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000527.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.5
+  - filename: 00000528.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000529.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.4
+  - filename: 00000530.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000531.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000532.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000533.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.3
+  - filename: 00000534.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.1
+    - "Treble": 0.2
+  - filename: 00000535.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000536.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.7
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000537.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000538.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000539.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000540.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000541.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000542.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000543.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.9
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000544.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000545.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.4
+  - filename: 00000546.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 0.4
+  - filename: 00000547.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000548.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.2
+  - filename: 00000549.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000550.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000551.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000552.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000553.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000554.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000555.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000556.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000557.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000558.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.7
+    - "Treble": 0.2
+  - filename: 00000559.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.3
+  - filename: 00000560.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000561.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000562.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.2
+  - filename: 00000563.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000564.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000565.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000566.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000567.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000568.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.8
+  - filename: 00000569.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.1
+  - filename: 00000570.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000571.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000572.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000573.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000574.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000575.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000576.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000577.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000578.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000579.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000580.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000581.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000582.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000583.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000584.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000585.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000586.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000587.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.1
+  - filename: 00000588.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000589.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000590.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000591.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000592.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000593.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000594.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000595.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000596.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000597.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.9
+  - filename: 00000598.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.5
+  - filename: 00000599.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000600.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000601.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000602.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000603.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 1.0
+  - filename: 00000604.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.2
+  - filename: 00000605.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000606.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000607.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.5
+  - filename: 00000608.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000609.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000610.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000611.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000612.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000613.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000614.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000615.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000616.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000617.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 1.0
+  - filename: 00000618.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000619.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000620.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000621.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000622.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.1
+  - filename: 00000623.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.8
+  - filename: 00000624.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000625.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.1
+  - filename: 00000626.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.4
+  - filename: 00000627.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000628.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000629.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000630.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000631.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.2
+    - "Treble": 0.8
+  - filename: 00000632.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.3
+  - filename: 00000633.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000634.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000635.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000636.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.7
+    - "Treble": 0.5
+  - filename: 00000637.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000638.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000639.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000640.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 1.0
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000641.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.4
+  - filename: 00000642.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000643.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000644.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000645.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000646.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000647.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000648.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.7
+  - filename: 00000649.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000650.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.6
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000651.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000652.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000653.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000654.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000655.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000656.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000657.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000658.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000659.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000660.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000661.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000662.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000663.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.2
+    - "Treble": 0.4
+  - filename: 00000664.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000665.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000666.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000667.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000668.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000669.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000670.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.9
+    - "Treble": 0.3
+  - filename: 00000671.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000672.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000673.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000674.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000675.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000676.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000677.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.4
+  - filename: 00000678.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000679.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000680.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000681.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000682.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.1
+    - "Treble": 0.5
+  - filename: 00000683.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 1.0
+  - filename: 00000684.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.4
+    - "Mid": 0.7
+    - "Treble": 0.9
+  - filename: 00000685.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.5
+    - "Treble": 0.2
+  - filename: 00000686.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.6
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000687.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000688.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000689.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000690.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000691.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000692.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000693.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000694.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000695.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.5
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000696.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.9
+  - filename: 00000697.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000698.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000699.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000700.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000701.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000702.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.1
+  - filename: 00000703.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000704.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000705.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000706.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000707.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 1.0
+  - filename: 00000708.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000709.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.5
+  - filename: 00000710.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.4
+  - filename: 00000711.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000712.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000713.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000714.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.2
+  - filename: 00000715.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000716.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000717.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000718.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000719.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000720.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.6
+    - "Treble": 0.2
+  - filename: 00000721.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000722.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000723.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000724.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000725.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.1
+    - "Mid": 0.9
+    - "Treble": 0.1
+  - filename: 00000726.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000727.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000728.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000729.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.8
+  - filename: 00000730.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000731.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000732.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000733.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.3
+  - filename: 00000734.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000735.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000736.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000737.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000738.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000739.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000740.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000741.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000742.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000743.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000744.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000745.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.7
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000746.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000747.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.5
+  - filename: 00000748.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000749.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000750.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000751.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 1.0
+  - filename: 00000752.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000753.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000754.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000755.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000756.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000757.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 0.6
+    - "Treble": 0.5
+  - filename: 00000758.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.2
+  - filename: 00000759.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.2
+  - filename: 00000760.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 1.0
+  - filename: 00000761.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000762.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000763.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000764.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000765.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.8
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000766.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000767.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 0.9
+    - "Treble": 0.1
+  - filename: 00000768.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000769.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000770.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000771.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.4
+  - filename: 00000772.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000773.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000774.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000775.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000776.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 0.1
+    - "Treble": 1.0
+  - filename: 00000777.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000778.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.9
+  - filename: 00000779.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.3
+  - filename: 00000780.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000781.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000782.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.8
+  - filename: 00000783.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000784.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.4
+  - filename: 00000785.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.6
+  - filename: 00000786.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000787.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.2
+  - filename: 00000788.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000789.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.1
+    - "Treble": 0.4
+  - filename: 00000790.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.5
+    - "Mid": 0.3
+    - "Treble": 0.7
+  - filename: 00000791.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.7
+    - "Treble": 0.2
+  - filename: 00000792.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000793.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 0.2
+  - filename: 00000794.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000795.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.4
+    - "Treble": 0.6
+  - filename: 00000796.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000797.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000798.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000799.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000800.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000801.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000802.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.3
+  - filename: 00000803.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000804.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000805.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.1
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000806.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000807.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000808.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.4
+  - filename: 00000809.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000810.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000811.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000812.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000813.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000814.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.7
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000815.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000816.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000817.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.8
+  - filename: 00000818.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000819.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 0.8
+  - filename: 00000820.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 1.0
+  - filename: 00000821.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000822.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000823.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.8
+  - filename: 00000824.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000825.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 0.4
+  - filename: 00000826.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000827.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000828.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000829.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 0.3
+  - filename: 00000830.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.1
+  - filename: 00000831.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 1.0
+  - filename: 00000832.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000833.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000834.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000835.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000836.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000837.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 0.5
+  - filename: 00000838.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000839.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.4
+  - filename: 00000840.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000841.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000842.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000843.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000844.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000845.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.3
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000846.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000847.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000848.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000849.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.2
+  - filename: 00000850.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 1.0
+    - "Mid": 0.5
+    - "Treble": 0.1
+  - filename: 00000851.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.3
+  - filename: 00000852.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.5
+  - filename: 00000853.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.2
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000854.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000855.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.8
+  - filename: 00000856.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.4
+    - "Treble": 0.8
+  - filename: 00000857.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.3
+  - filename: 00000858.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000859.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.8
+  - filename: 00000860.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000861.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.1
+    - "Mid": 1.0
+    - "Treble": 0.3
+  - filename: 00000862.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000863.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000864.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.9
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000865.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000866.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.5
+  - filename: 00000867.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000868.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000869.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 0.1
+    - "Treble": 0.6
+  - filename: 00000870.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000871.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000872.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.7
+  - filename: 00000873.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000874.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.3
+  - filename: 00000875.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.2
+  - filename: 00000876.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000877.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000878.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000879.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.7
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000880.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000881.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.3
+    - "Mid": 0.9
+    - "Treble": 0.6
+  - filename: 00000882.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.2
+    - "Mid": 0.6
+    - "Treble": 0.4
+  - filename: 00000883.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000884.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000885.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000886.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.5
+    - "Treble": 0.4
+  - filename: 00000887.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.4
+    - "Mid": 0.3
+    - "Treble": 0.2
+  - filename: 00000888.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.1
+  - filename: 00000889.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.7
+    - "Treble": 0.8
+  - filename: 00000890.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.7
+  - filename: 00000891.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.8
+  - filename: 00000892.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.1
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000893.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000894.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000895.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.4
+    - "Mid": 0.9
+    - "Treble": 0.5
+  - filename: 00000896.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000897.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.6
+    - "Mid": 0.7
+    - "Treble": 0.1
+  - filename: 00000898.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 1.0
+  - filename: 00000899.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000900.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.4
+  - filename: 00000901.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000902.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.4
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000903.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000904.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000905.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.1
+    - "Treble": 0.5
+  - filename: 00000906.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000907.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000908.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.2
+    - "Mid": 0.1
+    - "Treble": 0.7
+  - filename: 00000909.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.7
+  - filename: 00000910.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.3
+    - "Treble": 0.5
+  - filename: 00000911.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.7
+    - "Treble": 0.9
+  - filename: 00000912.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000913.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.1
+    - "Mid": 0.9
+    - "Treble": 0.7
+  - filename: 00000914.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.4
+    - "Mid": 0.8
+    - "Treble": 0.7
+  - filename: 00000915.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.3
+    - "Mid": 0.4
+    - "Treble": 0.5
+  - filename: 00000916.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000917.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.9
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000918.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.3
+  - filename: 00000919.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.6
+    - "Treble": 0.2
+  - filename: 00000920.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.9
+  - filename: 00000921.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.3
+  - filename: 00000922.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000923.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000924.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.3
+    - "Treble": 0.1
+  - filename: 00000925.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 1.0
+    - "Mid": 0.1
+    - "Treble": 0.3
+  - filename: 00000926.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000927.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 1.0
+  - filename: 00000928.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000929.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 0.4
+    - "Treble": 0.7
+  - filename: 00000930.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.3
+  - filename: 00000931.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000932.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.9
+  - filename: 00000933.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 1.0
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000934.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.8
+    - "Mid": 0.7
+    - "Treble": 0.8
+  - filename: 00000935.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.1
+    - "Treble": 0.5
+  - filename: 00000936.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.1
+  - filename: 00000937.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000938.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.5
+    - "Mid": 1.0
+    - "Treble": 0.6
+  - filename: 00000939.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000940.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.4
+    - "Mid": 0.2
+    - "Treble": 0.6
+  - filename: 00000941.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 1.0
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000942.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 1.0
+    - "Mid": 0.6
+    - "Treble": 0.1
+  - filename: 00000943.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000944.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.7
+    - "Mid": 0.6
+    - "Treble": 0.8
+  - filename: 00000945.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.8
+    - "Mid": 0.2
+    - "Treble": 0.2
+  - filename: 00000946.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000947.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 1.0
+    - "Treble": 0.3
+  - filename: 00000948.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.1
+  - filename: 00000949.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.1
+  - filename: 00000950.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 0.3
+    - "Treble": 0.3
+  - filename: 00000951.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 1.0
+  - filename: 00000952.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.9
+    - "Mid": 0.4
+    - "Treble": 0.1
+  - filename: 00000953.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.1
+    - "Mid": 0.4
+    - "Treble": 0.3
+  - filename: 00000954.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.2
+    - "Mid": 0.5
+    - "Treble": 0.3
+  - filename: 00000955.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.8
+    - "Mid": 0.8
+    - "Treble": 0.6
+  - filename: 00000956.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.6
+    - "Treble": 0.5
+  - filename: 00000957.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.6
+    - "Mid": 0.9
+    - "Treble": 0.1
+  - filename: 00000958.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.1
+    - "Mid": 0.5
+    - "Treble": 0.6
+  - filename: 00000959.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 1.0
+    - "Mid": 1.0
+    - "Treble": 0.1
+  - filename: 00000960.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.4
+    - "Mid": 0.5
+    - "Treble": 0.4
+  - filename: 00000961.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.9
+  - filename: 00000962.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.6
+    - "Treble": 1.0
+  - filename: 00000963.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.8
+  - filename: 00000964.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.8
+    - "Mid": 0.3
+    - "Treble": 0.9
+  - filename: 00000965.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.3
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000966.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.6
+    - "Mid": 0.2
+    - "Treble": 1.0
+  - filename: 00000967.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.7
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000968.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.3
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000969.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.2
+    - "Mid": 0.7
+    - "Treble": 0.4
+  - filename: 00000970.wav
+    settings:
+    - "Drive": 0.1
+    - "Bass": 0.1
+    - "Mid": 0.6
+    - "Treble": 0.6
+  - filename: 00000971.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.8
+    - "Mid": 0.9
+    - "Treble": 0.4
+  - filename: 00000972.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 0.9
+  - filename: 00000973.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 1.0
+    - "Mid": 0.2
+    - "Treble": 0.4
+  - filename: 00000974.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.8
+    - "Treble": 0.9
+  - filename: 00000975.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.5
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000976.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.6
+    - "Mid": 1.0
+    - "Treble": 0.4
+  - filename: 00000977.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.6
+  - filename: 00000978.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 1.0
+  - filename: 00000979.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.5
+    - "Mid": 0.5
+    - "Treble": 0.8
+  - filename: 00000980.wav
+    settings:
+    - "Drive": 0.5
+    - "Bass": 0.5
+    - "Mid": 0.7
+    - "Treble": 0.8
+  - filename: 00000981.wav
+    settings:
+    - "Drive": 1.0
+    - "Bass": 0.5
+    - "Mid": 0.9
+    - "Treble": 0.2
+  - filename: 00000982.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.2
+    - "Mid": 0.2
+    - "Treble": 0.4
+  - filename: 00000983.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.9
+    - "Mid": 0.5
+    - "Treble": 0.2
+  - filename: 00000984.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.6
+    - "Mid": 0.3
+    - "Treble": 1.0
+  - filename: 00000985.wav
+    settings:
+    - "Drive": 0.7
+    - "Bass": 0.7
+    - "Mid": 1.0
+    - "Treble": 0.7
+  - filename: 00000986.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.1
+    - "Mid": 0.8
+    - "Treble": 0.4
+  - filename: 00000987.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.2
+    - "Mid": 0.8
+    - "Treble": 0.2
+  - filename: 00000988.wav
+    settings:
+    - "Drive": 0.3
+    - "Bass": 0.9
+    - "Mid": 0.6
+    - "Treble": 0.7
+  - filename: 00000989.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.7
+    - "Treble": 0.8
+  - filename: 00000990.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.2
+    - "Mid": 0.4
+    - "Treble": 1.0
+  - filename: 00000991.wav
+    settings:
+    - "Drive": 0.2
+    - "Bass": 0.4
+    - "Mid": 0.1
+    - "Treble": 0.4
+  - filename: 00000992.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.7
+  - filename: 00000993.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.8
+    - "Mid": 0.1
+    - "Treble": 0.8
+  - filename: 00000994.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 0.6
+    - "Mid": 0.8
+    - "Treble": 0.4
+  - filename: 00000995.wav
+    settings:
+    - "Drive": 0.6
+    - "Bass": 0.9
+    - "Mid": 0.2
+    - "Treble": 0.5
+  - filename: 00000996.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.9
+    - "Mid": 0.9
+    - "Treble": 0.8
+  - filename: 00000997.wav
+    settings:
+    - "Drive": 0.8
+    - "Bass": 0.1
+    - "Mid": 0.2
+    - "Treble": 0.3
+  - filename: 00000998.wav
+    settings:
+    - "Drive": 0.9
+    - "Bass": 0.3
+    - "Mid": 0.6
+    - "Treble": 0.9
+  - filename: 00000999.wav
+    settings:
+    - "Drive": 0.4
+    - "Bass": 1.0
+    - "Mid": 0.9
+    - "Treble": 0.9

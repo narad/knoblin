@@ -1,0 +1,29 @@
+brand: "Fractal"
+device: "FM3"
+model: "Octave Distortion"
+device_type: "Pedal"
+data_type: "Synthetic"
+preset_id: 34
+controls:
+  - name: 'Drive'
+    value: 1
+  - name: 'Tone'
+    value: 2
+sweeps:
+  - comment: "Full Sweep"
+    params:
+    - name: ['Drive']
+      parameter_type: continuous
+      min: 0.1
+      max: 1.0
+      step: 0.1
+    - name: ['Tone']
+      parameter_type: continuous
+      min: 0.1
+      max: 1.0
+      step: 0.1
+defaults:
+  - name: "Level"
+    value: 1.0
+
+

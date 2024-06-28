@@ -1,0 +1,101 @@
+name: Chase Bliss MKII
+control_type: MIDI
+parameters:
+  - name: Volume
+    parameter_type: continuous
+    min_value: 1
+    max_value: 10
+    midi: 14
+  - name: Treble
+    parameter_type: continuous
+    min_value: 1
+    max_value: 10
+    midi: 15
+  - name: Mids
+    parameter_type: continuous
+    min_value: 1
+    max_value: 10
+    midi: 16
+  - name: Freq
+    parameter_type: continuous
+    min_value: 1
+    max_value: 10
+    midi: 17
+  - name: Bass
+    parameter_type: continuous
+    min_value: 1
+    max_value: 10
+    midi: 18
+  - name: Gain
+    parameter_type: continuous
+    min_value: 1
+    max_value: 10
+    midi: 19
+  - name: Mid_type
+    parameter_type: discrete
+    midi: 23
+    settings:
+      - name: off
+        midi: 1
+      - name: pre
+        midi: 2
+      - name: post
+        midi: 3
+  - name: q
+    parameter_type: discrete
+    midi: 24
+    settings:
+      - name: low
+        midi: 1
+      - name: mid
+        midi: 2
+      - name: high
+        midi: 3
+  - name: diode
+    parameter_type: discrete
+    midi: 25
+    settings:
+      - name: off
+        midi: 1
+      - name: silicon
+        midi: 2
+      - name: germanium
+        midi: 3
+  - name: fuzz
+    parameter_type: discrete
+    midi: 26
+    settings:
+      - name: off
+        midi: 1
+      - name: open
+        midi: 2
+      - name: gated
+        midi: 3
+
+
+#         self.controls2midi = {
+#             'volume': 14,
+#             'treble': 15,
+#             'mids': 16,
+#             'freq': 17,
+#             'bass': 18,
+#             'gain': 19,
+#             'mid_type': 23,
+#             'q': 24,
+#             'diode': 25,
+#             'fuzz': 26
+#         }
+
+#         self.default_sweeps = {
+#             'volume': [2],
+#             'treble': [4, 8],
+#             'mids': [2, 5, 8],
+#             'freq': [3, 5, 7],
+#             'bass': [3],
+#             'gain': [3,6,9],
+#             'mid_type': [1, 2, 3],
+#             'q': [1, 2, 3],
+#             'diode': [1, 2, 3],
+#             'fuzz': [1, 2, 3]
+#         }
+#

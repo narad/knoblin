@@ -5,9 +5,9 @@
 
 from PyQt5 import QtWidgets, QtCore, QtGui
 
-
 class ValueDial(QtWidgets.QWidget):
 
+    customValueChanged = QtCore.pyqtSignal(int)  # Custom signal, if needed
 
     def __init__(self, *args, **kwargs):
         self._dialProperties = (
@@ -25,15 +25,14 @@ class ValueDial(QtWidgets.QWidget):
         )
 
         # remove properties used as keyword arguments for the dial
-        dialArgs = {k:v for k, v in kwargs.items() if k in self._dialProperties}
+        dialArgs = {k: v for k, v in kwargs.items() if k in self._dialProperties}
         for k in dialArgs.keys():
             kwargs.pop(k)
         super().__init__(*args, **kwargs)
         layout = QtWidgets.QVBoxLayout(self)
         self.dial = QtWidgets.QDial(self, **dialArgs)
         layout.addWidget(self.dial)
-        self.dial.valueChanged.connect(self.valueChanged)
-        # make the dial the focus proxy (so that it captures focus *and* key events)
+        self.dial.valueChanged.connect(self.onDialValueChanged)  # Connect to the new slot
         self.setFocusProxy(self.dial)
 
         # simple "monkey patching" to access dial functions
@@ -52,11 +51,12 @@ class ValueDial(QtWidgets.QWidget):
         self._inPadding = 3
         self._outPadding = 2
 
-        self.valueChanged = QtCore.pyqtSignal(int)
-
         self.updateSize()
-        super(ValueDial, self).__init__()
 
+    def onDialValueChanged(self, value):
+        # Handle the value change here
+        print(f"Dial value changed to: {value}")
+        self.customValueChanged.emit(value)  # Emit custom signal, if needed
 
 
 

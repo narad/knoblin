@@ -1,0 +1,20 @@
+brand: "Fractal"
+device: "FM3"
+device_type: "Amplifier"
+data_type: "Synthetic"
+control_type: "MIDI"
+controls:
+  midi_channel: 0
+  midi_mapping:
+  - midi: 11
+    external_id: 1
+  - midi: 12
+    external_id: 2
+  - midi: 13
+    external_id: 3
+  - midi: 14
+    external_id: 4
+  - midi: 15
+    external_id: 5
+  - midi: 16
+    external_id: 6

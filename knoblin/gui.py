@@ -10,10 +10,11 @@ to connecting knobs to servos so that they can be properly calibrated.
 
 """
 
-
 from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import Qt, QThreadPool
+from PyQt5.QtWidgets import QCheckBox, QPushButton, QFileDialog, QLabel, QLineEdit, QVBoxLayout, QHBoxLayout
+
 
 from dial import ValueDial
 import sys
@@ -34,8 +35,10 @@ class KnoblinGUI(QWidget):
         self.setLayout(layout)
 
         # Add title
-        self.setWindowTitle("Knoblin - Graphic Controller Interface v.1")
-        self.setFixedHeight(300)
+        self.setWindowTitle("Knoblin - Graphic Controller Interface v.2")
+#        self.setFixedHeight(300)
+        # Set a larger fixed size for the main window
+#        self.setFixedSize(800, 600)
 
         # Add elements
         self.add_menu()
@@ -64,6 +67,289 @@ class KnoblinGUI(QWidget):
 
         # Pool for multi-threading the back-end processes
         self.threadpool = QThreadPool()
+
+        # # Debugging: Add a simple label to check visibility
+        # self.debug_label = QLabel("Debug Label", self)
+        # layout.addWidget(self.debug_label, 6, 0, 1, 3)
+
+        # Add 'Show sweeps' checkbox outside the sweep options layout
+        self.show_sweeps_checkbox = QCheckBox("Show sweeps")
+        self.show_sweeps_checkbox.stateChanged.connect(self.toggle_sweep_options)
+        self.layout.addWidget(self.show_sweeps_checkbox, 5, 0, 1, 3)
+
+        # Setup sweep options
+        self.setup_sweep_options()
+
+        self.sweep_options_groupbox.setVisible(False)
+
+
+
+    def setup_sweep_options(self):
+        print("setting up sweep options")
+        # Group Box for sweep options
+        self.sweep_options_groupbox = QGroupBox("Sweep Options")
+        self.sweep_options_layout = QVBoxLayout(self.sweep_options_groupbox)
+
+        # Adjust spacing and margins
+        self.sweep_options_layout.setSpacing(10)
+        self.sweep_options_layout.setContentsMargins(10, 30, 10, 10)  # Increase the top margin
+
+        # File loader for audio files
+        file_loader_layout = QHBoxLayout()
+        self.file_loader_button = QPushButton("Load Audio Files")
+        self.file_loader_button.clicked.connect(self.load_audio_files)
+        self.file_loader_button.setMaximumWidth(150)  # Control button width
+        file_loader_layout.addWidget(self.file_loader_button)
+
+        self.loaded_files_label = QLabel("No files loaded")
+        file_loader_layout.addWidget(self.loaded_files_label)
+
+        # Add file loader layout to sweep options layout
+        self.sweep_options_layout.addLayout(file_loader_layout)
+
+               # # Container Widget for sweep options
+       #  self.sweep_options_widget = QWidget()
+       #  self.sweep_options_layout = QVBoxLayout(self.sweep_options_widget)
+
+        # 'Show sweeps' checkbox
+        # self.show_sweeps_checkbox = QCheckBox("Show sweeps")
+        # self.show_sweeps_checkbox.stateChanged.connect(self.toggle_sweep_options)
+        # self.sweep_options_layout.addWidget(self.show_sweeps_checkbox)
+
+        # # File loader for audio files
+        # self.file_loader_button = QPushButton("Load Audio Files")
+        # self.file_loader_button.clicked.connect(self.load_audio_files)
+        # self.loaded_files_label = QLabel("No files loaded")
+        # self.sweep_options_layout.addWidget(self.file_loader_button)
+        # self.sweep_options_layout.addWidget(self.loaded_files_label)
+
+        # Container for knob settings
+        self.knob_settings_layout = QVBoxLayout()
+
+        # Add the knob settings layout to the sweep options layout
+        self.sweep_options_layout.addLayout(self.knob_settings_layout)
+
+
+        # 'Begin Sweep' button
+        self.begin_sweep_button = QPushButton("Begin Sweep")
+        self.begin_sweep_button.clicked.connect(self.begin_sweep)
+        self.begin_sweep_button.setMaximumWidth(150)
+        self.begin_sweep_button.setEnabled(False)  # Initially disabled
+        self.sweep_options_layout.addWidget(self.begin_sweep_button)
+
+        # Add the Group Box to the main layout
+        self.layout.addWidget(self.sweep_options_groupbox, 6, 0, 1, 3)
+
+
+    def update_knob_info_in_sweeps(self):
+        # Iterate over existing knobs to create settings inputs
+        print(self.knob_settings_layout)
+        for knob_info in self.knob_infos:
+            print(knob_info)
+            if not self.find_knob_setting_by_name(knob_info["Knob Name"]):
+                self.add_knob_setting(knob_info)
+#            print(self.knob_settings_layout)
+
+
+    def find_knob_setting_by_name(self, knob_name):
+        for i in range(self.knob_settings_layout.count()):
+            # Get the layout item
+            item = self.knob_settings_layout.itemAt(i)
+
+            # Check if the item is a layout (it should be, as per your setup)
+            if item.layout() is not None:
+                knob_layout = item.layout()
+
+                # Assuming the first widget in each knob layout is the QLabel for the knob name
+                label_item = knob_layout.itemAt(0)
+                if label_item is not None and label_item.widget() is not None:
+                    label = label_item.widget()
+                    if isinstance(label, QLabel) and label.text() == knob_name:
+                        return True  # Found the knob with the matching name
+
+        return False  # No matching knob name found
+
+
+    def get_knob_sweep_settings(self):
+        sweep_settings = {}
+
+        for i in range(self.knob_settings_layout.count()):
+            item = self.knob_settings_layout.itemAt(i)
+            if item.layout() is not None:
+                knob_layout = item.layout()
+
+                # Initialize variables
+                knob_name = None
+                settings = {'min': None, 'max': None, 'interval': None}
+                setting_keys = iter(settings.keys())  # Iterator for the settings keys
+
+                for j in range(knob_layout.count()):
+                    layout_item = knob_layout.itemAt(j)
+                    if layout_item is not None:
+                        widget = layout_item.widget()
+                        if widget is not None:
+                            if isinstance(widget, QLabel) and knob_name is None:
+                                knob_name = widget.text()  # Extract the knob name
+                        else:
+                            qhb = layout_item.layout()
+                            for k in range(qhb.count()):
+                                sub_qhb = qhb.itemAt(k).widget()
+                                if isinstance(sub_qhb, QComboBox):
+                                    setting_key = next(setting_keys, None)
+                                    if setting_key:
+                                        settings[setting_key] = float(sub_qhb.currentText())
+
+                if knob_name:
+                    sweep_settings[knob_name] = settings
+
+        return sweep_settings
+
+
+
+
+    def toggle_sweep_options(self):
+        print("toggling sweep options")
+        show = self.show_sweeps_checkbox.isChecked()
+
+        # Toggle the visibility of the entire group box
+        self.sweep_options_groupbox.setVisible(show)
+
+#        self.sweep_options_layout.setVisible(show)
+#        self.setup_sweep_options()
+
+        # Adjust the size of the main window based on its contents
+        self.adjustSize()
+
+        # print(show)
+        # self.setup_sweep_options()
+        # for i in range(self.sweep_options_layout.count()): 
+        #     widget = self.sweep_options_layout.itemAt(i).widget()
+        #     if widget is not None:
+        #         widget.setVisible(show)
+
+
+    def load_audio_files(self):
+        # File dialog to load audio files
+        files, _ = QFileDialog.getOpenFileNames(self, "Select Audio Files", "", "Audio Files (*.mp3 *.wav)")
+        if files:
+            self.loaded_files_label.setText("\n".join(files))
+            self.audio_file_paths = files  # Store the file paths
+            self.begin_sweep_button.setEnabled(True)  # Enable the Begin Sweep button
+
+
+
+    def add_knob_setting(self, knob_info):
+        # Vertical layout for each knob's settings
+        knob_vertical_layout = QVBoxLayout()
+
+        # Label for the knob name
+        knob_label = QLabel(knob_info['Knob Name'])
+        knob_vertical_layout.addWidget(knob_label)
+
+        def create_labeled_dropdown(label_text, values, current_value):
+            layout = QHBoxLayout()
+
+            # Create and add the label
+            label = QLabel(label_text)
+            label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)  # Align label vertically center
+            layout.addWidget(label)
+
+            # Create and add the dropdown
+            dropdown = QComboBox()
+            dropdown.addItems(values)
+            dropdown.setCurrentText(str(current_value))
+            dropdown.setMaximumWidth(80)
+            dropdown.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)  # Adjust size policy
+            layout.addWidget(dropdown)
+            layout.setAlignment(dropdown, Qt.AlignVCenter)  # Align dropdown vertically center
+
+            # Add a stretchable space to push label and dropdown to the left
+            layout.addStretch(1)
+
+            return layout
+
+
+        # Add min, max, and interval dropdowns
+        min_values = self.generate_range_values(0, 10, 0.5)
+        max_values = self.generate_range_values(0, 10, 0.5)
+        interval_values = self.generate_range_values(0, 10, 0.1)
+        knob_vertical_layout.addLayout(create_labeled_dropdown("Min:", min_values, knob_info['Min Value']))
+        knob_vertical_layout.addLayout(create_labeled_dropdown("Max:", max_values, knob_info['Max Value']))
+        knob_vertical_layout.addLayout(create_labeled_dropdown("Interval:", interval_values, "1.0"))  # Replace "1.0" with your default interval value
+
+        # Add the knob's vertical layout to the main knob settings layout
+        self.knob_settings_layout.addLayout(knob_vertical_layout)
+
+
+    def generate_range_values(self, r_start, r_end, r_interval):
+        # Generate a list of values for the dropdowns
+        vals = []
+        while r_start <= r_end:
+            vals.append(f"{r_start:.1f}")
+            r_start += r_interval
+        return vals
+#        return [f"{(x * 1.0):.1f}" for x in range(r_start, r_end, r_interval)]  # Adjust range as needed
+
+
+    def begin_sweep(self):
+        print("Beginning sweep...")
+
+        # Load audio data for all selected WAV files
+        import soundfile as sf
+        input_audios = []
+        sample_rate = None
+        for file_path in self.audio_file_paths:
+            print(file_path)
+            data, sr = sf.read(file_path, dtype='float32')
+            input_audios.append(data)
+            sample_rate = sr
+        print(sample_rate)
+
+#        audio_data = [self.load_audio(file_path) for file_path in self.audio_file_paths]
+
+        sweep_settings = self.get_knob_sweep_settings()
+        print(sweep_settings)
+
+        # Iterate over the knob settings layouts to get the sweep settings
+        knob_names = list(sweep_settings.keys())
+        print(knob_names)
+        settings = [[]]
+        for knob_name in knob_names:
+            new_settings = []
+            knob_settings = sweep_settings[knob_name]
+            v = knob_settings['min']
+            print(v)
+            while v <= knob_settings['max']:
+                print(v)
+                for s in settings:
+                    new_settings.append(s + [v])
+                v += knob_settings['interval']
+            settings = new_settings
+
+        print(len(settings))
+        print(settings)
+        print("done")
+
+        # Setup for recording loop
+        from play_record import Recorder
+        recorder = Recorder()
+
+        # Perform the sweep for each knob
+        fi = 0
+        for setting in settings:
+            for i,v in enumerate(setting):
+                # Update the knob value in the GUI and servo controller
+                self.dials[i].setValue(v)
+                self.change_knob(i)
+
+                # Wait for a set time
+                sleep(5)  # Adjust sleep duration as needed
+#                        pstring = '_'.join([f"{k}-{v}" for k,v in setting.items()])
+
+                for input_audio in input_audios:
+                    recording = recorder.record(input_audio, sr=sample_rate, filename=f"{fi}.wav")
+                fi += 1
+
 
 
 
@@ -124,7 +410,9 @@ class KnoblinGUI(QWidget):
             d.setFixedWidth(80)
             d.setValue(int((max_val - min_val) / 2))
 
-            d.valueChanged.connect(lambda val, i=i: self.change_knob(i))
+            d.dial.valueChanged.connect(lambda val, i=i: self.change_knob(i))
+
+            # d.valueChanged.connect(lambda val, i=i: self.change_knob(i))
 
             self.dials.append(d)
 
@@ -156,6 +444,9 @@ class KnoblinGUI(QWidget):
 
             # Allow for presets to be saved
             self.preset_button.setEnabled(True)
+
+            # Update the knob info for the sweeps section
+            self.update_knob_info_in_sweeps()
 
 
 
@@ -263,6 +554,7 @@ class KnoblinGUI(QWidget):
 
 
 
+
 class KnobDialog(QDialog):
 
     def __init__(self, parent=None, num_knobs=0):
@@ -355,7 +647,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     knoblinGUI = KnoblinGUI()
     # Add stylesheet
-    with open("../css/dark.css","r") as fh:
+    with open("css/dark.css","r") as fh:
         knoblinGUI.setStyleSheet(fh.read())
     # Show App
     knoblinGUI.show()
