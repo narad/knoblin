@@ -18,13 +18,24 @@ class HardwareConfig:
         self.device_type = info['device_type']
         self.data_type = info['data_type']
         if 'controls' in info:
-            self.midi_channel = info['controls']['midi_channel']
-            midi_ccs = {}
-            for p in info['controls']['midi_mapping']:
-                midi_ccs[p['external_id']] = p['midi']            
-            # for p in info['controls']['midi_mapping']:
-            #     midi_ccs[p['name']] = p['midi']
-            self.midi_mapping = midi_ccs
+            try:
+                self.midi_channel = info['controls']['midi_channel']
+                midi_ccs = {}
+                for p in info['controls']['midi_mapping']:
+                    midi_ccs[p['external_id']] = p['midi']            
+                # for p in info['controls']['midi_mapping']:
+                #     midi_ccs[p['name']] = p['midi']
+                self.midi_mapping = midi_ccs
+            except:
+                print("Maybe not a MIDI based config file?")
+
+            try:
+                name2servo = {}
+                for c in info['controls']:
+                    name2servo[c['name']] = c['value']
+                self.control_mapping = name2servo
+            except:
+                print("error adding servo controls")
 
         if 'preset_mapping' in info:
             self.preset_mapping = {}

@@ -16,24 +16,43 @@ import soundfile as sf
 
 from knoblin.sweeps import Sweeper, SweepConfig
 from knoblin.hardware import HardwareConfig
-from knoblin.midi.midi_controller import MIDIController
 
 # audio notification
 from pydub import AudioSegment
 from pydub.playback import play
 
-controller = MIDIController()
 
 
 def generate_data(di_file, output_dir, device_config, sweep_config, args):
 
-    midi_channel = device_config.midi_channel
-    # External control ID -> MIDI CC
-    midi_mapping = device_config.midi_mapping
-    # Control name str -> External control ID
-    control_mapping = sweep_config.control_mapping
-    print(sweep_config.control_mapping)
-#    print(preset_mapping)
+
+    method = ["midi", "servo"][1]
+    if method == "midi":
+        from knoblin.midi.midi_controller import MIDIController
+        midi_channel = device_config.midi_channel
+        # External control ID -> MIDI CC
+        midi_mapping = device_config.midi_mapping
+        # Control name str -> External control ID
+        controller = MIDIController(midi_device_name='Clarett 4Pre USB',
+                                    midi_channel=midi_channel,
+                                    midi_mapping=midi_mapping)
+    elif method == "servo":
+        control_mapping = device_config.control_mapping
+        from knoblin.knob import Knob, ActuatedKnob
+        knob = Knob(name="Fuzz",
+                    degrees=300,
+                    min_position=0,
+                    max_position=10)
+        from knoblin.servo import Servo270
+        servo = Servo270(servo_id=0)
+        act_knob = ActuatedKnob(knob=knob,
+                                servo=servo,
+                                attachment="max")
+        from knoblin.servo_controller import KnobServoController
+        controller = KnobServoController(knobs=[act_knob])
+
+
+
 
     # Load DI
     di, sr = sf.read(di_file, dtype='float32', samplerate=None)
@@ -46,47 +65,44 @@ def generate_data(di_file, output_dir, device_config, sweep_config, args):
     # Add padding
     di = np.concatenate([di, np.zeros([args.pad_samples])])
 
+    # Servos are freaking out during initialization it seems
+    # temp command to wait through it if it happens
+    import time 
+    time.sleep(30)
+
     # Compute sweeps
     sweeper = Sweeper(sweep_config, max_samples=args.max_samples)
-    file_offset = 0
+    i = 0
     for sweep_name, sweep in sweeper.sweeps:
         sweep = list(sweep)
         num_settings = len(sweep)
 
         print(f"Performing sweep \"{sweep_name}\"")
-        last_setting = None
         for setting in tqdm(sweep):
             if args.verbose:
-                print(setting)       
+                print(setting)  
+
+            if method == "servo":
+                for p,v in setting.items():
+                    setting[p] = v * 10
+
             # Set settings on device
-            # for pnam, pci in control_mapping.items():
-            for pname, pval in setting.items():
-                if last_setting is not None and setting[pname] == last_setting[pname]:
-                    continue
-                else:
-                    if args.verbose:
-                        print(pname, "\t", pval)
-                    external_cid = control_mapping[pname]
-                    pci =  midi_mapping[external_cid]
-                    pcv = knob2midi(int(pval * 10))
-                    if args.verbose:
-                        print(f"  setting cid {external_cid} via CC ID {pci} to val {pcv}")
-                    controller.change_setting(midi_channel, pci, pcv, verbose=False, get_response=False)
-            last_setting = setting
+            controller.change_setting(setting)
 
             # Recording
             if args.verbose:
                 print("recording")
-            recording = sd.playrec(di, sr, device=0, channels=args.recording_channel)
-            status = sd.wait()
-            recording = recording[:,args.recording_channel-1]
+            # recording = sd.playrec(di, sr, device=0, channels=args.recording_channel)
+            # status = sd.wait()
+            # recording = recording[:,args.recording_channel-1]
+            time.sleep(3)
 
             # Write recording to file
-            pstring = '_'.join([f"{k}-{v}" for k,v in setting.items()])
-            sf.write(output_dir / f"{file_offset:08d}.wav", recording, sr)
+            # pstring = '_'.join([f"{k}-{v}" for k,v in setting.items()])
+            # sf.write(output_dir / f"{i:08d}.wav", recording, sr)
 
-            # Update offset to new total number of files in directory
-            file_offset += 1
+            # Update count (to new total number of files in directory)
+            i += 1
 
     # write out settings in index file
     sweeper.write(output_dir / "settings.yaml", di_file)
@@ -96,13 +112,9 @@ def generate_data(di_file, output_dir, device_config, sweep_config, args):
         shutil.copy(di_file, output_dir / di_file.name)
 
 
-def knob2midi(knob_value):
-    return int((127 / 10) * knob_value)
 
 
-def generate_data_from_fractal(settings, controller, pci, pcv, sleep_time=1, last_settings=None):
-    # for param_name, param_val in settings.items():
-    #     print(param_name, param_val)
+def generate_data_from_fractal(settings, controller, pci, pcv, sleep_time=1):
     for pnam, pci in control_mapping.items():
         pcv = knob2midi(10)
         controller.change_setting(0, pci, pcv, True)
@@ -143,21 +155,18 @@ if __name__ == '__main__':
     if args.sweep_conf_file.is_file():
         sweep_configs = [SweepConfig(args.sweep_conf_file)]
     elif args.sweep_conf_file.is_dir():
-        print("loading...")
+        print(f"Loading sweeps from file {args.sweep_conf_file}...")
         sweep_configs = [SweepConfig(f) for f in args.sweep_conf_file.glob("*.yaml")]
-    sweep_configs.sort(key=lambda x: x.model)
+        print(f"Total configurations in sweep: {len(sweep_configs)}")
+#    sweep_configs.sort(key=lambda x: x.model)
 
     # Collect possibly multiple DI files
     di_files = [Path(f) for f in args.di_file.split(',')]
 
-    print(len(sweep_configs))
     # Loop through all conf files
     for sweep_config in sweep_configs:
         if args.set_preset:
             print(sweep_config.model)
-#            print(device_config.preset_mapping)
-#            print(sweep_config.model in device_config.preset_mapping.keys())
-#            preset_id = device_config.preset_mapping[sweep_config.model]
 
             print(f"Model {sweep_config.model} is setup on preset {sweep_config.preset_id}")
             controller.change_preset(channel=device_config.midi_channel, program=sweep_config.preset_id)
@@ -166,13 +175,11 @@ if __name__ == '__main__':
         # Loop through all given DI
         root_output_dir = args.output_dir
         for di_file in di_files:
-            output_dir = root_output_dir / device_config.brand_name / device_config.device_name / sweep_config.model / args.sweep_conf_file.stem / di_file.stem
+            output_dir = root_output_dir / device_config.brand_name / device_config.device_name / args.sweep_conf_file.stem / di_file.stem
+#            output_dir = root_output_dir / device_config.brand_name / device_config.device_name / sweep_config.model / args.sweep_conf_file.stem / di_file.stem
             print(str(output_dir))
             output_dir.mkdir(parents=True, exist_ok=True)
 
-            # Set rendering args for this specific run
-            # args.__dict__['di_file'] = di_file
-            # args.__dict__['output_dir'] = output_dir
             if args.verbose:
                 print(args)
             generate_data(di_file, output_dir, device_config, sweep_config, args)
@@ -189,6 +196,12 @@ if __name__ == '__main__':
 
 
 
+    # for param_name, param_val in settings.items():
+    #     print(param_name, param_val)
+
+            # Set rendering args for this specific run
+            # args.__dict__['di_file'] = di_file
+            # args.__dict__['output_dir'] = output_dir
 
 #    di = data[start_second * sr:(start_second + duration) * sr]
 

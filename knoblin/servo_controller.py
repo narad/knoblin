@@ -6,11 +6,11 @@ a interface for creating virtual knobs, and sends messages to update
 the physical knob positions.
 """
 
-import serial   
-from util.connect_arduino import get_port_name
-from knob import Knob, ActuatedKnob
-from servo import Servo270
+from knoblin.connect_arduino import get_port_name
+from knoblin.knob import Knob, ActuatedKnob
+from knoblin.servo import Servo270
 from time import sleep
+import serial   
 
 from typing import Dict, List
 
@@ -67,6 +67,10 @@ class KnobServoController:
                              attachment=attachment)
         self.name2knob[knob_name] = aknob
         self.id2knob[servo.servo_id] = aknob
+
+
+    def change_setting(self, setting):
+        self.move_all(name2pos=setting)
 
 
     def move(self, knob_name: str, position: int, delay:int=0) -> None:
